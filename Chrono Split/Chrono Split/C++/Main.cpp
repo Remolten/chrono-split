@@ -8,21 +8,40 @@
 //Include Their Files
 #include <iostream> //input output
 #include <chrono> //high-res timer (chrono::high_resolution_clock::timepoint & chrono::high_resolution_clock::now())
-#include <SFML\Window.hpp> //Gui elements
 
 //Include Our files
-#include "../C++/Sprites/sprite.cpp" //import sprite.cpp
-#include "../C++/Render/render.cpp" //import render.cpp
-#include "../C++/Physics/physics.cpp" //import physics.cpp
+#include "../C++/Sprites/sprite.cpp"
+#include "../C++/Render/render.cpp"
+#include "../C++/Physics/physics.cpp"
 
-//Using
-using namespace std; //for easy cout & cin
+// Include SFML Window module
+#include <SFML/Window.hpp>
+
+using std::cout;
+using std::cin;
+using std::endl;
 
 int main()
 {
 	int pause; //for pause purposes
 
 	cout << "Hello world" << endl;
-	cin >> pause; //pause
-	return 0; //exited corectly
+    sf::Window window(sf::VideoMode(800, 600), "Chrono Split");
+    
+	cout << "Hello world" << endl;
+    
+    // run the program as long as the window is open
+    while (window.isOpen())
+    {
+        // check all the window's events that were triggered since the last iteration of the loop
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            // "close requested" event: we close the window
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+    }
+    
+	return 0;
 }
