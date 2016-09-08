@@ -20,7 +20,9 @@ using namespace std; //for easy cout & cin
 
 int main()
 {
+	int pause; //for pause purposes
+
 	cout << "Hello world" << endl;
-	system("pause");
+	cin >> pause; //pause
 	return 0; //exited corectly
 }
