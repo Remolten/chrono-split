@@ -9,13 +9,13 @@
 #include <iostream> //input output
 #include <chrono> //high-res timer (chrono::high_resolution_clock::timepoint & chrono::high_resolution_clock::now())
 
+// Include SFML Window module
+#include <SFML/Window.hpp>
+
 //Include Our files
 #include "../C++/Sprites/sprite.cpp"
 #include "../C++/Render/render.cpp"
 #include "../C++/Physics/physics.cpp"
-
-// Include SFML Window module
-#include <SFML/Window.hpp>
 
 using std::cout;
 using std::cin;
@@ -25,10 +25,7 @@ int main()
 {
 	int pause; //for pause purposes
 
-	cout << "Hello world" << endl;
-    sf::Window window(sf::VideoMode(800, 600), "Chrono Split");
-    
-	cout << "Hello world" << endl;
+    sf::Window window(sf::VideoMode(800, 600), "Chrono Split"); //Creates a window
     
     // run the program as long as the window is open
     while (window.isOpen())
