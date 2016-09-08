@@ -14,12 +14,16 @@
 #include "../C++/Render/render.cpp" //import render.cpp
 #include "../C++/Physics/physics.cpp" //import physics.cpp
 
+#include <SFML/Window.hpp>
+
 //Using
 using namespace std; //for easy cout & cin
 
 int main()
 {
+	sf::Window screen(sf::VideoMode(800, 600), "Chrono Split");
+
 	cout << "Hello world" << endl;
-	system("pause"); 
+	system("pause");
 	return 0; //exited corectly
 }
