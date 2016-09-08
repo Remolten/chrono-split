@@ -1,5 +1,5 @@
 //Project: Chrono Split
-//Authors: Remington, Lucas, and Thomas
+//Authors: Remington, Lucas, and Thomas Queenan
 //Written: 09/07/16 to ??/??/??
 
 //Discription:
@@ -20,6 +20,6 @@ using namespace std; //for easy cout & cin
 int main()
 {
 	cout << "Hello world" << endl;
-	system("pause");
+	system("pause"); 
 	return 0; //exited corectly...
 }
