@@ -115,7 +115,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="C++\Main.cpp" />
+    <ClCompile Include="C++\Physics\physics.cpp" />
+    <ClCompile Include="C++\Render\render.cpp" />
+    <ClCompile Include="C++\Sprites\sprite.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Lua\Lua.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C++\Main.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
