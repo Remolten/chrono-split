@@ -27,3 +27,6 @@
 *.exe
 *.out
 *.app
+/Chrono Split/Debug
+/Chrono Split/Chrono Split/Debug
+/Chrono Split/Chrono Split.VC.VC.opendb
