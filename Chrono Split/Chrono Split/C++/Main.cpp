@@ -61,5 +61,6 @@ int main()
         // Actually push all draw calls to the display
         renderer.display(&window);
     }
+    
 	return 0;
 }

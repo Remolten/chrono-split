@@ -2,9 +2,12 @@
 #include <unordered_map>
 #include <string>
 
+// Ensures things aren't imported multiple times
+#pragma once
+
 namespace Sprites
 {
-	struct Sprite: sf::Sprite
+	struct Sprite : sf::Sprite
 	{
 		//Stores an images with string name to a map
 		std::unordered_map<std::string, sf::Texture> images;

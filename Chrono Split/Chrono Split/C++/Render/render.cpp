@@ -30,6 +30,8 @@ namespace Render {
         int display(sf::RenderWindow *window)
         {
             window->display();
+            
+            return 0;
         }
         
         // Draws a green circle to the screen every frame
