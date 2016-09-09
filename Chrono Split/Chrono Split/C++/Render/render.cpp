@@ -1,7 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include <SFML/Graphics/Color.hpp>
-
-#include <iostream>
+#include <iostream> // debug
 
 namespace Render {
     struct render_engine
