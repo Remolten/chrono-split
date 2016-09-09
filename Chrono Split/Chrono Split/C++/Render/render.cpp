@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Color.hpp>
 
 namespace Render {
     struct render_engine
@@ -12,7 +13,7 @@ namespace Render {
         {
             // Create a circle of size 100 and color green to be drawn
             sf::CircleShape shape(100.f);
-            shape.setFillColor(sf::Color::Green);
+			shape.setFillColor(sf::Color::Green);
         }
         
         // Draws a green circle to the screen every frame
