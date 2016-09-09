@@ -17,9 +17,10 @@ namespace Render {
         {
             // Create a circle of size 100 and color green to be drawn
             shape.setRadius(100.f);
-            shape.setFillColor(sf::Color::Red);
+            shape.setFillColor(sf::Color::Green);
         }
         
+        // Clears the screen
         int clear(sf::RenderWindow *window)
         {
             window->clear(sf::Color::Black);
@@ -27,6 +28,7 @@ namespace Render {
             return 0;
         }
         
+        // Pushes all draw calls to the display
         int display(sf::RenderWindow *window)
         {
             window->display();
@@ -34,7 +36,7 @@ namespace Render {
             return 0;
         }
         
-        // Draws a green circle to the screen every frame
+        // Draws a single sprite to the screen
         int draw(sf::RenderWindow *window, Sprites::Sprite sprite)
         {
             window->draw(sprite);
@@ -42,6 +44,7 @@ namespace Render {
             return 0;
         }
         
+        // Draw a list of sprites to the screen
         int draw_list(sf::RenderWindow *window, Sprites::Sprite sprites[], unsigned int sprites_array_size)
         {
             for (unsigned int i = 0; i < sprites_array_size; i++)
@@ -52,6 +55,7 @@ namespace Render {
             return 0;
         }
         
+        // 
         int draw_green_circle(sf::RenderWindow *window)
         {
             window->draw(shape);
