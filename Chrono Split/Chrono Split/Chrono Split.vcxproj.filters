@@ -31,4 +31,7 @@
   <ItemGroup>
     <None Include="Lua\Lua.lua" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Assets\Assets.txt" />
+  </ItemGroup>
 </Project>
