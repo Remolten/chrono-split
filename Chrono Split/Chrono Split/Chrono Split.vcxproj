@@ -122,6 +122,7 @@
     <ClCompile Include="C++\Main.cpp" />
     <ClCompile Include="C++\Physics\physics.cpp" />
     <ClCompile Include="C++\Render\render.cpp" />
+    <ClCompile Include="C++\Sprites\Entity.cpp" />
     <ClCompile Include="C++\Sprites\sprite.cpp" />
   </ItemGroup>
   <ItemGroup>

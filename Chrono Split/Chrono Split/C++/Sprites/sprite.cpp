@@ -3,7 +3,7 @@
 #include <string>
 #pragma once
 
-namespace Sprites
+namespace Entity
 {
 	struct Sprite : sf::Sprite
 	{
