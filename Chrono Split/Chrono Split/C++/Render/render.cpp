@@ -3,7 +3,6 @@
 // Get the type of our sprites
 #include "../Sprites/sprite.cpp"
 
-#include <iostream>
 #include <iostream> // debug
 
 namespace Render {
@@ -34,16 +33,16 @@ namespace Render {
         }
         
         // Draws a green circle to the screen every frame
-        int draw(sf::RenderWindow *window, Sprites::sprite sprite)
+        int draw(sf::RenderWindow *window, Sprites::Sprite sprite)
         {
             window->draw(sprite);
             
             return 0;
         }
         
-        int draw_list(sf::RenderWindow *window, Sprites::sprite sprites[])
+        int draw_list(sf::RenderWindow *window, Sprites::Sprite sprites[], unsigned int sprites_array_size)
         {
-            for (unsigned int i = 0; i < sizeof(sprites) / sizeof(sprites[0]); i++)
+            for (unsigned int i = 0; i < sprites_array_size; i++)
             {
                 window->draw(sprites[i]);
             }
