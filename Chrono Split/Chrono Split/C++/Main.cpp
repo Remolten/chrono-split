@@ -28,6 +28,10 @@ using std::endl;
 std::chrono::high_resolution_clock::time_point ProgStartTime = std::chrono::high_resolution_clock::now();
 
 //timer for debug console messages
+//use for time since program start
+//example:
+// cout << Time() << {Message} << endl;
+
 std::string Time()
 {
 	using namespace std::chrono; //for easy code
@@ -63,10 +67,11 @@ int main()
 
     // Create an instance of the render engine
     Render::render_engine renderer;
-	cout << Time() << "Renderer initilized" << endl;
+	cout << Time() << "Render initilized" << endl;
     
     // Create a clock which gives the delta time of each frame
     sf::Clock clock;
+	cout << Time() << "Timer  initilized" << endl;
     
     // Store the delta time
     // Pass this to any function handling movement/time
@@ -89,6 +94,8 @@ int main()
             // Process any key down events from the keyboard
             if (event.type == sf::Event::KeyPressed)
             {
+				cout << Time() << "Keypress: " << event.key.code << endl; //log keys
+
                 if (event.key.code == sf::Keyboard::W)
                 {
                     // Set the move up flag
