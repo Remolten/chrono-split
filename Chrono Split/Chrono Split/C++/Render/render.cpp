@@ -41,7 +41,7 @@ namespace Render {
         }
         
         // Draws a single sprite to the screen
-        int draw(sf::RenderWindow *window, Sprites::Sprite sprite)
+        int draw(sf::RenderWindow *window, Entity::Sprite sprite)
         {
             window->draw(sprite);
             
@@ -49,7 +49,7 @@ namespace Render {
         }
         
         // Draw a list of sprites to the screen
-        int draw_list(sf::RenderWindow *window, Sprites::Sprite sprites[], unsigned int sprites_array_size)
+        int draw_list(sf::RenderWindow *window, Entity::Sprite sprites[], unsigned int sprites_array_size)
         {
             for (unsigned int i = 0; i < sprites_array_size; i++)
             {
