@@ -1,6 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Color.hpp>
 
+#include <iostream>
+
 namespace Render {
     struct render_engine
     {

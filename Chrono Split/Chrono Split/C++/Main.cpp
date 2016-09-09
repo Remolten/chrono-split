@@ -26,9 +26,11 @@ int main()
     
     // Creates a new window object stored in the "window" variable
     sf::RenderWindow window(sf::VideoMode(800, 600), "Chrono Split");
-    
+	std::cout << ": Window initilized" << endl;
+
     // Create an instance of the render engine
     Render::render_engine renderer;
+	std::cout << ": Renderer initilized" << endl;
     
     // Run the program as long as the window is open
     while (window.isOpen())
@@ -45,6 +47,5 @@ int main()
                 window.close();
         }
     }
-    
 	return 0;
 }
