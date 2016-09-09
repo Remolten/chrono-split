@@ -1,8 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <unordered_map>
 #include <string>
-
-// Ensures things aren't imported multiple times
 #pragma once
 
 namespace Sprites
@@ -24,5 +22,19 @@ namespace Sprites
 			return images[name];
 		}
 
+		//Change current texture, return false if dosn't texture exists
+		bool switchTextureTo(std::string name)
+		{
+			try //Just in case name doesn't exist in the map
+			{
+				images.at(name);
+				setTexture(images[name]);
+			}
+			catch(const std::exception& e)
+			{
+				return false;
+			}
+			return false;
+		}
 	};
 }
