@@ -10,7 +10,7 @@
 #include <chrono> //high-res timer (chrono::high_resolution_clock::timepoint & chrono::high_resolution_clock::now())
 
 // Include SFML Window module
-#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
 
 //Include Our files
 #include "../C++/Sprites/sprite.cpp"
@@ -24,15 +24,19 @@ using std::endl;
 int main()
 {
 	int pause; //for pause purposes
-
-	cout << "Hello world" << endl;
     
     // Creates a new window object stored in the "window" variable
-    sf::Window window(sf::VideoMode(800, 600), "Chrono Split");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Chrono Split");
+    
+    // Create an instance of the render engine
+    Render::render_engine renderer;
     
     // Run the program as long as the window is open
     while (window.isOpen())
     {
+        // Draw stuff with the render engine
+        renderer.draw(&window);
+        
         // Check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;
         while (window.pollEvent(event))
