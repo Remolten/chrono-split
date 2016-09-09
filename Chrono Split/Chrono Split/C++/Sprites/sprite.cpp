@@ -18,6 +18,7 @@ namespace Sprites
 			images[name] = picture;
 		}
 
+		//Retrive image by name
 		sf::Texture getImage(std::string name)
 		{
 			return images[name];
