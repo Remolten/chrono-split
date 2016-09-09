@@ -35,9 +35,19 @@ int main()
     Render::render_engine renderer;
 	cout << ": Renderer initilized" << endl;
     
+    // Create a clock which gives the delta time of each frame
+    sf::Clock clock;
+    
+    // Store the delta time
+    // Pass this to any function handling movement/time
+    sf::Time delta_time;
+    
     // Run the program as long as the window is open
     while (window.isOpen())
-    { 
+    {
+        // Restart the clock and store the delta time
+        delta_time = clock.restart();
+        
         // Check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;
         while (window.pollEvent(event))
