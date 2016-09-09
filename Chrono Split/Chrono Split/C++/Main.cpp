@@ -31,7 +31,7 @@ int main()
     Render::render_engine renderer;
 
 	// Creates a new window object stored in the "window" variable
-	sf::Window window(sf::VideoMode(800, 600), "Chrono Split"); 
+	sf::RenderWindow window(sf::VideoMode(800, 600), "Chrono Split"); 
     
     // Run the program as long as the window is open
     while (window.isOpen())
