@@ -13,7 +13,7 @@ namespace Render {
         {
             // Create a circle of size 100 and color green to be drawn
             shape.setRadius(100.f);
-            shape.setFillColor(sf::Color::Green);
+            shape.setFillColor(sf::Color::Red);
         }
         
         // Draws a green circle to the screen every frame
