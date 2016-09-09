@@ -49,8 +49,8 @@ std::string Time()
 	units[1] = trunc( ( (times) - (3600 * units[0]) ) / (60) ); //gets minuits
 	units[2] = trunc( (times - ( (3600 * units[0]) + (60 * units[1]) ) ) ); //gets seconds
 	units[3] = trunc( (times - trunc(times) ) * 1000); //gets parts of a sec
-
-	std::stringstream str; //creates a string stream for string building
+	
+	stringstream str; //creates a string stream for string building
 	str << units[0] << ":" << units[1] << ":" << units[2] << "." << units[3] << " :: "; //format data into string
 
 	return str.str(); //returns time string
