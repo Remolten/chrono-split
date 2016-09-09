@@ -55,6 +55,54 @@ int main()
             // "Close Requested" event: Close the window
             if (event.type == sf::Event::Closed)
                 window.close();
+            
+            // Process any key down events from the keyboard
+            if (event.type == sf::Event::KeyPressed)
+            {
+                if (event.key.code == sf::Keyboard::W)
+                {
+                    // Set the move up flag
+                }
+                
+                if (event.key.code == sf::Keyboard::S)
+                {
+                    // Set the move down flag
+                }
+                
+                if (event.key.code == sf::Keyboard::A)
+                {
+                    // Set the move left flag
+                }
+                
+                if (event.key.code == sf::Keyboard::D)
+                {
+                    // Set the move right flag
+                }
+            }
+            
+            // Process any key up events from the keyboard
+            if (event.type == sf::Event::KeyReleased)
+            {
+                if (event.key.code == sf::Keyboard::W)
+                {
+                    // Unset the move up flag
+                }
+                
+                if (event.key.code == sf::Keyboard::S)
+                {
+                    // Unset the move down flag
+                }
+                
+                if (event.key.code == sf::Keyboard::A)
+                {
+                    // Unset the move left flag
+                }
+                
+                if (event.key.code == sf::Keyboard::D)
+                {
+                    // Unset the move right flag
+                }   
+            }
         }
         
         // Clear the screen each frame
