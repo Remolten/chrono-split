@@ -8,6 +8,9 @@
 //Include Their Files
 #include <iostream> //input output
 #include <chrono> //high-res timer (chrono::high_resolution_clock::timepoint & chrono::high_resolution_clock::now())
+#include <cmath> //c-math
+#include <string> //strings
+#include <sstream> //string building
 
 // Include SFML Window module
 #include <SFML/Graphics.hpp>
@@ -21,19 +24,46 @@ using std::cout;
 using std::cin;
 using std::endl;
 
+// Records the start time of the program for console messages
+std::chrono::high_resolution_clock::time_point ProgStartTime = std::chrono::high_resolution_clock::now();
+
+//timer for debug console messages
+std::string Time()
+{
+	using namespace std::chrono; //for easy code
+	using namespace std; 
+
+	high_resolution_clock::time_point now = high_resolution_clock::now(); // records now
+	duration<double> time = duration_cast<duration<double>>(now - ProgStartTime); // finds change in time
+
+	double times = time.count();
+
+	//parse into string
+	int units[4];
+
+	units[0] = trunc( (times / (60 * 60) ) ); //gets hours
+	units[1] = trunc( ( (times) - (60 * 60 * units[0]) ) / (60) ); //gets minuits
+	units[2] = trunc( (times - ( (60 * 60 * units[0]) + (60 * units[1]) ) ) ); //gets seconds
+	units[3] = trunc( (times - trunc(times) ) * 1000); //gets parts of a sec
+
+	std::stringstream str; //creates a string stream for string building
+	str << units[0] << ":" << units[1] << ":" << units[2] << "." << units[3] << " :: "; //format data into string
+
+	return str.str(); //returns time string
+}
+
 int main()
 {
-    
     // Creates a new window object stored in the "window" variable
     sf::RenderWindow window(sf::VideoMode(800, 600), "Chrono Split");
-	cout << ": Window initilized" << endl;
+	cout << Time() << "Window initilized" << endl;
 
 	// Limit the FPS to 60
 	window.setFramerateLimit(60);
 
     // Create an instance of the render engine
     Render::render_engine renderer;
-	cout << ": Renderer initilized" << endl;
+	cout << Time() << "Renderer initilized" << endl;
     
     // Create a clock which gives the delta time of each frame
     sf::Clock clock;
