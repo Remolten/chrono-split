@@ -10,7 +10,7 @@ namespace Render {
     {
         // Declare variables here that you want to access throughout the struct
         sf::CircleShape shape;
-        
+		sf::RectangleShape rect;
         // This is the constructor function
         // Declare any variables that need to be accessed by the render engine
         render_engine()
@@ -18,6 +18,10 @@ namespace Render {
             // Create a circle of size 100 and color green to be drawn
             shape.setRadius(100.f);
             shape.setFillColor(sf::Color::Green);
+
+			rect.setSize(sf::Vector2f(100.f, 100.f));
+			rect.setFillColor(sf::Color::Red);
+			rect.setPosition(50.f, 50.f);
         }
         
         // Clears the screen
@@ -59,7 +63,8 @@ namespace Render {
         int draw_green_circle(sf::RenderWindow *window)
         {
             window->draw(shape);
-            
+			window->draw(rect);
+
             return 0;
         }
 	};
