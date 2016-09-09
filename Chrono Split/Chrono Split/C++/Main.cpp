@@ -16,7 +16,7 @@
 #include <SFML/Graphics.hpp>
 
 //Include Our files
-#include "../C++/Sprites/sprite.cpp"
+#include "../C++/Sprites/sprite.cpp" //To be removed later
 #include "../C++/Render/render.cpp"
 #include "../C++/Physics/physics.cpp"
 
@@ -45,9 +45,9 @@ std::string Time()
 	//parse into string
 	int units[4];
 
-	units[0] = trunc( (times / (60 * 60) ) ); //gets hours
-	units[1] = trunc( ( (times) - (60 * 60 * units[0]) ) / (60) ); //gets minuits
-	units[2] = trunc( (times - ( (60 * 60 * units[0]) + (60 * units[1]) ) ) ); //gets seconds
+	units[0] = trunc( (times / (3600) ) ); //gets hours
+	units[1] = trunc( ( (times) - (3600 * units[0]) ) / (60) ); //gets minuits
+	units[2] = trunc( (times - ( (3600 * units[0]) + (60 * units[1]) ) ) ); //gets seconds
 	units[3] = trunc( (times - trunc(times) ) * 1000); //gets parts of a sec
 
 	std::stringstream str; //creates a string stream for string building
@@ -96,6 +96,9 @@ int main()
             {
 				cout << Time() << "Keypress: " << event.key.code << endl; //log keys
 
+				//Game input should not be handled in main
+				//Send the input to the World class later
+				/*
                 if (event.key.code == sf::Keyboard::W)
                 {
                     // Set the move up flag
@@ -114,7 +117,7 @@ int main()
                 if (event.key.code == sf::Keyboard::D)
                 {
                     // Set the move right flag
-                }
+                */
             }
             
             // Process any key up events from the keyboard
