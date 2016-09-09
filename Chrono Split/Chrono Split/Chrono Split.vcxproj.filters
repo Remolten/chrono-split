@@ -31,9 +31,4 @@
   <ItemGroup>
     <None Include="Lua\Lua.lua" />
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="C++\Main.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
 </Project>

@@ -127,9 +127,6 @@
   <ItemGroup>
     <None Include="Lua\Lua.lua" />
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="C++\Main.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
