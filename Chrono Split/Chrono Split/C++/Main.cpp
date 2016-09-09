@@ -37,10 +37,7 @@ int main()
     
     // Run the program as long as the window is open
     while (window.isOpen())
-    {
-        // Draw stuff with the render engine
-        renderer.draw(&window);
-        
+    { 
         // Check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;
         while (window.pollEvent(event))
@@ -49,6 +46,20 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
+        
+        // Clear the screen each frame
+        renderer.clear(&window);
+        
+        // Draw stuff with the render engine
+        // render.draw(sprite);
+        // or
+        // renderer.draw_list(sprites_list);
+        
+        // Draw a green circle
+        renderer.draw_green_circle(&window);
+        
+        // Actually push all draw calls to the display
+        renderer.display(&window);
     }
 	return 0;
 }

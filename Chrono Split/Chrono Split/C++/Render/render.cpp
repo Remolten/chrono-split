@@ -1,4 +1,9 @@
 #include <SFML/Graphics.hpp>
+
+// Get the type of our sprites
+#include "../Sprites/sprite.cpp"
+
+#include <iostream>
 #include <iostream> // debug
 
 namespace Render {
@@ -16,17 +21,39 @@ namespace Render {
             shape.setFillColor(sf::Color::Red);
         }
         
-        // Draws a green circle to the screen every frame
-        int draw(sf::RenderWindow *window)
+        int clear(sf::RenderWindow *window)
         {
-            // Clear the screen to black
             window->clear(sf::Color::Black);
             
-            // Draws a green circle
-            window->draw(shape);
-            
-            // Pushes the draw updates to the display (so they actually show up)
+            return 0;
+        }
+        
+        int display(sf::RenderWindow *window)
+        {
             window->display();
+        }
+        
+        // Draws a green circle to the screen every frame
+        int draw(sf::RenderWindow *window, Sprites::sprite sprite)
+        {
+            window->draw(sprite);
+            
+            return 0;
+        }
+        
+        int draw_list(sf::RenderWindow *window, Sprites::sprite sprites[])
+        {
+            for (unsigned int i = 0; i < sizeof(sprites) / sizeof(sprites[0]); i++)
+            {
+                window->draw(sprites[i]);
+            }
+            
+            return 0;
+        }
+        
+        int draw_green_circle(sf::RenderWindow *window)
+        {
+            window->draw(shape);
             
             return 0;
         }
