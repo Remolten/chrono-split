@@ -26,6 +26,7 @@ int main()
     
     // Creates a new window object stored in the "window" variable
     sf::RenderWindow window(sf::VideoMode(800, 600), "Chrono Split");
+
 	// Limit the FPS to 60
 	window.setFramerateLimit(60);
 
