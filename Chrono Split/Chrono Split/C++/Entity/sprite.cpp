@@ -1,7 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <unordered_map>
 #include <string>
-#pragma once
 
 namespace entity
 {
@@ -34,7 +33,7 @@ namespace entity
 				images.at(name);
 				setTexture(images[name]);
 			}
-			catch(const std::exception& e)
+			catch(const std::exception&)
 			{
 				return false;
 			}

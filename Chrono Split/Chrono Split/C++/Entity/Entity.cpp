@@ -11,12 +11,13 @@ namespace entity
 		int centerVelocityY = 0;
 		entity::Sprite *parts;
 
-		//
+		//Constructor
 		Entity(entity::Sprite Sprites[])
 		{
 			parts = Sprites;
 		}
 
+		//Return array of Sprites
 		entity::Sprite getSprites()
 		{
 			return *parts;

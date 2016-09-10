@@ -16,7 +16,6 @@
 #include <SFML/Graphics.hpp>
 
 //Include Our files
-#include "../C++/Entity/sprite.cpp" //To be removed later
 #include "../C++/Render/render.cpp"
 #include "../C++/World/World.cpp"
 
@@ -48,7 +47,7 @@ std::string Time()
 	units[0] = (int)trunc((times / (3600))); //gets hours
 	units[1] = (int)trunc(((times)-(3600 * units[0])) / (60)); //gets minuits
 	units[2] = (int)trunc((times - ((3600 * units[0]) + (60 * units[1])))); //gets seconds
-	units[3] = (int)trunc( (times - trunc(times) ) * 1000); //gets parts of a sec
+	units[3] = (int)trunc((times - trunc(times)) * 1000); //gets parts of a sec
 	
 	stringstream str; //creates a string stream for string building
 	str << units[0] << ":" << units[1] << ":" << units[2] << "." << units[3] << " :: "; //format data into string
@@ -119,7 +118,7 @@ int main()
                     // Set the move right flag
                 */
             }
-            
+            /*
             // Process any key up events from the keyboard
             if (event.type == sf::Event::KeyReleased)
             {
@@ -143,6 +142,7 @@ int main()
                     // Unset the move right flag
                 }   
             }
+			*/
         }
         
         // Clear the screen each frame

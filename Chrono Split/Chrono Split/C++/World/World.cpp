@@ -1,5 +1,6 @@
 #include "../World/Map.cpp"
 #include <string>
+#include <SFML/Graphics.hpp>
 
 namespace world
 {
@@ -19,5 +20,15 @@ namespace world
 		{
 			delete map;
 		}
+
+		//Receive keyboard input
+		void keyboardInput(sf::Event event)
+		{
+			switch (event.key.code)
+			{
+
+			}
+		}
+
 	};
 }
