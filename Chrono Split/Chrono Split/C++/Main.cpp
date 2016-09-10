@@ -18,7 +18,7 @@
 //Include Our files
 #include "../C++/Entity/sprite.cpp" //To be removed later
 #include "../C++/Render/render.cpp"
-#include "../C++/Physics/physics.cpp"
+#include "../C++/World/World.cpp"
 
 using std::cout;
 using std::cin;
