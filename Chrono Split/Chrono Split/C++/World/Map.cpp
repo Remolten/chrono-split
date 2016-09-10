@@ -1,0 +1,8 @@
+
+namespace World
+{
+	struct Map
+	{
+
+	};
+}

@@ -9,11 +9,16 @@ namespace Entity
 		int centerVelocityX = 0;
 		int centerVelocityY = 0;
 
-		Entity::Sprite *Parts;
+		Entity::Sprite *parts;
 
 		Entity(Entity::Sprite Sprites[])
 		{
-			Parts = Sprites;
+			parts = Sprites;
+		}
+
+		Entity::Sprite getSprites()
+		{
+			return *parts;
 		}
 	};
 }
