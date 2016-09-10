@@ -7,6 +7,10 @@ namespace Entity
 {
 	struct Sprite : sf::Sprite
 	{
+		//Unique Data
+		int velocityX = 0;
+		int velocityY = 0;
+
 		//Stores an images with string name to a map
 		std::unordered_map<std::string, sf::Texture> images;
 

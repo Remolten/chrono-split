@@ -122,8 +122,8 @@
     <ClCompile Include="C++\Main.cpp" />
     <ClCompile Include="C++\Physics\physics.cpp" />
     <ClCompile Include="C++\Render\render.cpp" />
-    <ClCompile Include="C++\Sprites\Entity.cpp" />
-    <ClCompile Include="C++\Sprites\sprite.cpp" />
+    <ClCompile Include="C++\Entity\Entity.cpp" />
+    <ClCompile Include="C++\Entity\sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Lua\Lua.lua" />

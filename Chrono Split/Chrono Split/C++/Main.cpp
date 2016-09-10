@@ -16,7 +16,7 @@
 #include <SFML/Graphics.hpp>
 
 //Include Our files
-#include "../C++/Sprites/sprite.cpp" //To be removed later
+//#include "../C++/Sprites/sprite.cpp" //To be removed later
 #include "../C++/Render/render.cpp"
 #include "../C++/Physics/physics.cpp"
 

@@ -1,9 +1,9 @@
 #include <SFML/Graphics.hpp>
+#include <iostream> // debug
 
 // Get the type of our sprites
-#include "../Sprites/sprite.cpp"
+#include "../Entity/sprite.cpp"
 
-#include <iostream> // debug
 
 namespace Render {
     struct render_engine
