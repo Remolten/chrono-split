@@ -1,4 +1,4 @@
-//#include "../C++/World/Map.cpp"
+#include "../World/Map.cpp"
 
 namespace World
 {

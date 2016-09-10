@@ -1,4 +1,3 @@
-
 namespace World
 {
 	struct Map
