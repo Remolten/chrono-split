@@ -36,6 +36,9 @@
     <ClCompile Include="C++\World\Map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C++\Entity\Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Lua\Lua.lua" />

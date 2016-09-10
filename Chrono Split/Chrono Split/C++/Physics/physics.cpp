@@ -1,4 +1,7 @@
 namespace physics
 {
+	struct Physics
+	{
 
+	};
 }

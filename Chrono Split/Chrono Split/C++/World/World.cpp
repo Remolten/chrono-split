@@ -1,4 +1,5 @@
 #include "../World/Map.cpp"
+#include "../Entity/Entity.cpp"
 #include <string>
 #include <SFML/Graphics.hpp>
 
@@ -8,6 +9,7 @@ namespace world
 	{
 		//Variables
 		world::Map *map;
+		entity::Entity *entities;
 
 		//Constructor
 		World(std::string fileName)
@@ -19,6 +21,7 @@ namespace world
 		~World()
 		{
 			delete map;
+			delete entities;
 		}
 
 		//Receive keyboard input

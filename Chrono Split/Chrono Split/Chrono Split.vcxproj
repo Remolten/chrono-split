@@ -119,6 +119,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="C++\Entity\Player.cpp" />
     <ClCompile Include="C++\Main.cpp" />
     <ClCompile Include="C++\Physics\physics.cpp" />
     <ClCompile Include="C++\Render\render.cpp" />

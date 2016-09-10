@@ -9,7 +9,6 @@ namespace world
 	{
 		//Variables
 
-
 		//Constructors
 		Map(std::string fileName)
 		{
