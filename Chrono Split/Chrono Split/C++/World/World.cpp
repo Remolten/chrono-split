@@ -1,9 +1,13 @@
 #include "../World/Map.cpp"
 
-namespace World
+namespace world
 {
 	struct World
 	{
-		//World::Map;
+		World() 
+		{
+			world::Map map;
+
+		}
 	};
 }

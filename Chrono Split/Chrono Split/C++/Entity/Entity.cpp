@@ -1,6 +1,6 @@
 #include "../Entity/sprite.cpp"
 
-namespace Entity
+namespace entity
 {
 	struct Entity
 	{
@@ -9,14 +9,14 @@ namespace Entity
 		int centerVelocityX = 0;
 		int centerVelocityY = 0;
 
-		Entity::Sprite *parts;
+		entity::Sprite *parts;
 
-		Entity(Entity::Sprite Sprites[])
+		Entity(entity::Sprite Sprites[])
 		{
 			parts = Sprites;
 		}
 
-		Entity::Sprite getSprites()
+		entity::Sprite getSprites()
 		{
 			return *parts;
 		}
