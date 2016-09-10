@@ -1,6 +1,6 @@
 //Project: Chrono Split
 //Authors: Remington, Lucas, and Thomas Queenan
-//Written: 09/07/16 to ??/??/??
+//Written: 09/07/16 to ??/??/16
 
 //Discription:
 // An arena based fighting game in c++ and Lua 
@@ -45,10 +45,10 @@ std::string Time()
 	//parse into string
 	int units[4];
 
-	units[0] = trunc( (times / (3600) ) ); //gets hours
-	units[1] = trunc( ( (times) - (3600 * units[0]) ) / (60) ); //gets minuits
-	units[2] = trunc( (times - ( (3600 * units[0]) + (60 * units[1]) ) ) ); //gets seconds
-	units[3] = trunc( (times - trunc(times) ) * 1000); //gets parts of a sec
+	units[0] = (int)trunc((times / (3600))); //gets hours
+	units[1] = (int)trunc(((times)-(3600 * units[0])) / (60)); //gets minuits
+	units[2] = (int)trunc((times - ((3600 * units[0]) + (60 * units[1])))); //gets seconds
+	units[3] = (int)trunc( (times - trunc(times) ) * 1000); //gets parts of a sec
 	
 	stringstream str; //creates a string stream for string building
 	str << units[0] << ":" << units[1] << ":" << units[2] << "." << units[3] << " :: "; //format data into string
@@ -66,7 +66,7 @@ int main()
 	window.setFramerateLimit(60);
 
     // Create an instance of the render engine
-    Render::render_engine renderer;
+    render::render_engine renderer;
 	cout << Time() << "Render initilized" << endl;
     
     // Create a clock which gives the delta time of each frame

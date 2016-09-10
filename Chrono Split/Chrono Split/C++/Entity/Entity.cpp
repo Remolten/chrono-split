@@ -4,13 +4,14 @@ namespace entity
 {
 	struct Entity
 	{
+		//Variables
 		int centerX = 0;
 		int centerY = 0;
 		int centerVelocityX = 0;
 		int centerVelocityY = 0;
-
 		entity::Sprite *parts;
 
+		//
 		Entity(entity::Sprite Sprites[])
 		{
 			parts = Sprites;
