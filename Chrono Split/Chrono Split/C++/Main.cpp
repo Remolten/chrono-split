@@ -16,7 +16,7 @@
 #include <SFML/Graphics.hpp>
 
 //Include Our files
-//#include "../C++/Sprites/sprite.cpp" //To be removed later
+#include "../C++/Entity/sprite.cpp" //To be removed later
 #include "../C++/Render/render.cpp"
 #include "../C++/Physics/physics.cpp"
 
@@ -38,7 +38,7 @@ std::string Time()
 	using namespace std; 
 
 	high_resolution_clock::time_point now = high_resolution_clock::now(); // records now
-	duration<double> time = duration_cast<duration<double>>(now - ProgStartTime); // finds change in time
+	duration<double> time = duration_cast<duration <double> >(now - ProgStartTime); // finds change in time
 
 	double times = time.count();
 
