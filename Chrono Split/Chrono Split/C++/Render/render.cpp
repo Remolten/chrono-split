@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 
 // Get the type of our sprites
-#include "../Sprites/sprite.cpp"
+#include "../Entity/sprite.cpp"
 
 #include <iostream> // debug
 
@@ -21,7 +21,7 @@ namespace Render {
 
 			rect.setSize(sf::Vector2f(100.f, 100.f));
 			rect.setFillColor(sf::Color::Red);
-			rect.setPosition(50.f, 50.f);
+			rect.setPosition(200, 200);
         }
         
         // Clears the screen
@@ -59,7 +59,7 @@ namespace Render {
             return 0;
         }
         
-        // 
+        // Draws a green circle and red rectangle
         int draw_green_circle(sf::RenderWindow *window)
         {
             window->draw(shape);
