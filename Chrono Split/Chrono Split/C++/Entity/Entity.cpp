@@ -5,15 +5,19 @@ namespace entity
 	struct Entity
 	{
 		//Variables
-		int centerX = 0;
-		int centerY = 0;
-		int centerVelocityX = 0;
-		int centerVelocityY = 0;
+		int centerX;
+		int centerY;
+		int centerVelocityX;
+		int centerVelocityY;
 		entity::Sprite *parts;
 
 		//Constructor
 		Entity(entity::Sprite Sprites[])
 		{
+			centerX = 0;
+			centerY = 0;
+			centerVelocityX = 0;
+			centerVelocityY = 0;
 			parts = Sprites;
 		}
 
