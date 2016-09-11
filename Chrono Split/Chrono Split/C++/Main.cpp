@@ -18,6 +18,7 @@
 //Include Our files
 #include "../C++/Render/render.cpp"
 #include "../C++/World/World.cpp"
+#include "../C++/Entity/Entity.cpp"
 
 using std::cout;
 using std::cin;

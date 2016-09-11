@@ -2,6 +2,8 @@
 #include <unordered_map>
 #include <string>
 
+#pragma once
+
 namespace entity
 {
 	struct Sprite : sf::Sprite

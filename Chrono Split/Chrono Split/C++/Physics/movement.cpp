@@ -1,10 +1,10 @@
-#include <../Entity/Entity.cpp
+#include "../Entity/Entity.cpp"
 
 namespace Movement
 {
     struct MovementSystem
     {
-        int move_down(Entity::Sprite sprite, int move_amount)
+        int move_down(entity::Sprite sprite, int move_amount)
         {
             return 0;
         }
