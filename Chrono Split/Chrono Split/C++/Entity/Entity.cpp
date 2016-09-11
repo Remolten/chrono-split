@@ -1,4 +1,5 @@
 #include "../Entity/sprite.cpp"
+#pragma once
 
 namespace entity
 {

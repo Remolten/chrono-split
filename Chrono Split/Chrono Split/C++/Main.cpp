@@ -19,6 +19,7 @@
 #include "../C++/Render/render.cpp"
 #include "../C++/World/World.cpp"
 #include "../C++/Entity/Entity.cpp"
+#include "../C++/Entity/sprite.cpp"
 
 using std::cout;
 using std::cin;
@@ -76,6 +77,14 @@ int main()
     // Store the delta time
     // Pass this to any function handling movement/time
     sf::Time delta_time;
+    
+    // Define a new sprite + entity container for testing
+    entity::Sprite sprite;
+    sf::Texture texture;
+    texture.loadFromFile("Chrono Split/Chrono Split/Assets/enemyBlue3.png");
+    sprite.addImage("basic", texture);
+    entity::Sprite sprites[1] = {sprite};
+    entity::Entity entity(sprites);
     
     // Run the program as long as the window is open
     while (window.isOpen())
@@ -149,13 +158,14 @@ int main()
         // Clear the screen each frame
         renderer.clear(&window);
         
+        renderer.draw(&window, entity.parts[0]);
         // Draw stuff with the render engine
         // render.draw(sprite);
         // or
         // renderer.draw_list(sprites_list);
         
         // Draw a green circle
-        renderer.draw_green_circle(&window);
+        //renderer.draw_green_circle(&window);
         
         // Actually push all draw calls to the display
         renderer.display(&window);
