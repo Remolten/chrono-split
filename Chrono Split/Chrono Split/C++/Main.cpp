@@ -71,13 +71,50 @@ int main()
     
 	// Don't do this code in Main
     // Define a new sprite + entity container for testing
+	
+	// Define Outer Part (Un colored)
 	sf::Texture texture;
-	texture.loadFromFile("../Chrono Split/Assets/enemyBlue3.png");
+	texture.loadFromFile("../Chrono Split/Assets/enemyPartLight.png");
 	entity::Sprite sprite;
 	sprite.addImage("body", texture);
 	sprite.switchTextureTo("body");
-	entity::Sprite sprites[1] = { sprite };
+	sprite.setColor(sf::Color(250, 250, 255, 255));
+
+	// Define Inner Part (colored)
+	sf::Texture texture1;
+	texture1.loadFromFile("../Chrono Split/Assets/enemyPartDark.png");
+	entity::Sprite sprite1;
+	sprite1.addImage("color", texture1);
+	sprite1.switchTextureTo("color");
+	sprite1.setColor(sf::Color(000, 255, 000, 255)); // color of part
+
+	entity::Sprite sprites[2] = { sprite, sprite1 };
 	entity::Entity entity(sprites);
+
+	// attempt to make sprite #2
+	// Define Outer Part (Un colored)
+	sf::Texture texture2;
+	texture2.loadFromFile("../Chrono Split/Assets/enemyPartLight.png");
+	entity::Sprite sprite2;
+	sprite2.setPosition(150,000);
+	sprite2.addImage("body", texture2);
+	sprite2.switchTextureTo("body");
+	sprite2.setColor(sf::Color(250, 250, 255, 255));
+
+	// Define Inner Part (colored)
+	sf::Texture texture3;
+	texture3.loadFromFile("../Chrono Split/Assets/enemyPartDark.png");
+	entity::Sprite sprite3;
+	sprite3.setPosition(150, 000);
+	sprite3.addImage("color", texture3);
+	sprite3.switchTextureTo("color");
+	sprite3.setColor(sf::Color(255, 000, 000, 255)); // color of part
+
+	entity::Sprite sprites1[2] = { sprite2, sprite3 };
+	entity::Entity entity1(sprites1);
+
+	
+
 	//
     
     // Run the program as long as the window is open
@@ -153,7 +190,8 @@ int main()
         renderer.clear(window);
         
 		
-		renderer.draw_list(window, entity.parts, 1);
+		renderer.draw_list(window, entity.parts, 2);
+		renderer.draw_list(window, entity1.parts, 2);
 
 			// Draw stuff with the render engine
 			// render.draw(window, sprite);

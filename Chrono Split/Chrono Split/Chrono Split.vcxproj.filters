@@ -50,5 +50,14 @@
     <Image Include="Assets\enemyBlue3.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Assets\enemyGreyScale3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\enemyPartDark.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\enemyPartLight.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
