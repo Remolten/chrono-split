@@ -27,6 +27,9 @@
 *.out
 *.app
 
+# Mac files
+.DS_Store
+
 /Chrono Split/Chrono Split/Debug
 /Chrono Split/Chrono Split.VC.VC.opendb
 /Chrono Split/Chrono Split.VC.opendb
