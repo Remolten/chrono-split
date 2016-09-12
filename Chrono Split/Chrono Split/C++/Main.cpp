@@ -68,15 +68,14 @@ int main()
     // Pass this to any function handling movement/time
     sf::Time delta_time;
     
-	/* Don't do this code in Main
     // Define a new sprite + entity container for testing
     sf::Texture texture;
-    texture.loadFromFile("Chrono Split/Chrono Split/Assets/enemyBlue3.png");
-    entity::Sprite sprite(texture);
-    sprite.addImage("basic", texture);
+    texture.loadFromFile("../Chrono Split/Assets/enemyBlue3.png");
+    entity::Sprite sprite;
+    sprite.addImage("body", texture);
+    sprite.switchTextureTo("body");
     entity::Sprite sprites[1] = {sprite};
     entity::Entity entity(sprites);
-	*/
     
     // Run the program as long as the window is open
     while (window.isOpen())
@@ -150,9 +149,8 @@ int main()
         // Clear the screen each frame
         renderer.clear(window);
         
-		/*//Doesn't work
+		
         renderer.draw_list(window, entity.parts, 1);
-        */
 
         // Draw stuff with the render engine
         // render.draw(window, sprite);
