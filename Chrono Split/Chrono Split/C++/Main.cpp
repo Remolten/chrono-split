@@ -79,9 +79,9 @@ int main()
     sf::Time delta_time;
     
     // Define a new sprite + entity container for testing
-    entity::Sprite sprite;
     sf::Texture texture;
     texture.loadFromFile("Chrono Split/Chrono Split/Assets/enemyBlue3.png");
+    entity::Sprite sprite(texture);
     sprite.addImage("basic", texture);
     entity::Sprite sprites[1] = {sprite};
     entity::Entity entity(sprites);
@@ -156,19 +156,20 @@ int main()
         }
         
         // Clear the screen each frame
-        renderer.clear(&window);
+        renderer.clear(window);
         
-        renderer.draw(&window, entity.parts[0]);
+        renderer.draw_list(window, entity.parts, 1);
+        
         // Draw stuff with the render engine
-        // render.draw(sprite);
+        // render.draw(window, sprite);
         // or
-        // renderer.draw_list(sprites_list);
+        // renderer.draw_list(window, sprites_list, sprites_list_length);
         
-        // Draw a green circle
-        //renderer.draw_green_circle(&window);
+        // Draw a green circle and red rect
+        //renderer.draw_green_circle(window);
         
         // Actually push all draw calls to the display
-        renderer.display(&window);
+        renderer.display(window);
     }
     
 	return 0;

@@ -23,6 +23,7 @@ namespace entity
 		}
 
 		//Return array of Sprites
+        // Note: this doesn't work atm
 		entity::Sprite getSprites()
 		{
 			return *parts;

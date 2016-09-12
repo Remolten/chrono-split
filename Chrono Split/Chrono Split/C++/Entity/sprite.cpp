@@ -15,6 +15,13 @@ namespace entity
 		//Stores an images with string name to a map
 		std::unordered_map<std::string, sf::Texture> images;
         
+        // Run the inherited constructor
+        Sprite(sf::Texture texture)
+        : sf::Sprite(texture)
+        {
+            // do nothing for now
+        }
+        
 		//Adds an image with a name to the map
 		void addImage(std::string name, sf::Texture picture)
 		{
