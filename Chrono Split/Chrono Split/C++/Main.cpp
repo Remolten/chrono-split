@@ -64,95 +64,97 @@ int main()
 	// Create a clock which gives the delta time of each frame
 	sf::Clock clock;
 	cout << Time() << "Timer  initilized" << endl;
-
-	// Store the delta time
-	// Pass this to any function handling movement/time
-	sf::Time delta_time;
-
+    
+    // Store the delta time
+    // Pass this to any function handling movement/time
+    sf::Time delta_time;
+    
 	// Don't do this code in Main
-	// Define a new sprite + entity container for testing
+    // Define a new sprite + entity container for testing
 	sf::Texture texture;
 	texture.loadFromFile("../Chrono Split/Assets/enemyBlue3.png");
-	entity::Sprite sprite = entity::Sprite(); //removed texture constructor due to commpile error
-	sprite.addImage("basic", texture); 
-	sprite.setTexture(texture); //sets texture
+	entity::Sprite sprite;
+	sprite.addImage("body", texture);
+	sprite.switchTextureTo("body");
 	entity::Sprite sprites[1] = { sprite };
 	entity::Entity entity(sprites);
 	//
-
-	// Run the program as long as the window is open
-	while (window.isOpen())
-	{
-		// Restart the clock and store the delta time
-		delta_time = clock.restart();
-
-		// Check all the window's events that were triggered since the last iteration of the loop
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			// "Close Requested" event: Close the window
-			if (event.type == sf::Event::Closed)
-				window.close();
-
-			// Process any key down events from the keyboard
-			if (event.type == sf::Event::KeyPressed)
-			{
+    
+    // Run the program as long as the window is open
+    while (window.isOpen())
+    {
+        // Restart the clock and store the delta time
+        delta_time = clock.restart();
+        
+        // Check all the window's events that were triggered since the last iteration of the loop
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            // "Close Requested" event: Close the window
+            if (event.type == sf::Event::Closed)
+                window.close();
+            
+            // Process any key down events from the keyboard
+            if (event.type == sf::Event::KeyPressed)
+            {
 				cout << Time() << "Keypress: " << event.key.code << endl; //log keys
 
 				//Game input should not be handled in main
 				//Send the input to the World class later
-				/*
-				if (event.key.code == sf::Keyboard::W)
-				{
-					// Set the move up flag
-				}
-
-				if (event.key.code == sf::Keyboard::S)
-				{
-					// Set the move down flag
-				}
-
-				if (event.key.code == sf::Keyboard::A)
-				{
-					// Set the move left flag
-				}
-
-				if (event.key.code == sf::Keyboard::D)
-				{
-					// Set the move right flag
-				}
-				// Process any key up events from the keyboard
-				if (event.type == sf::Event::KeyReleased)
-				{
-					if (event.key.code == sf::Keyboard::W)
-					{
-						// Unset the move up flag
-					}
-
-					if (event.key.code == sf::Keyboard::S)
-					{
-						// Unset the move down flag
-					}
-
-					if (event.key.code == sf::Keyboard::A)
-					{
-						// Unset the move left flag
-					}
-
-					if (event.key.code == sf::Keyboard::D)
-					{
-						// Unset the move right flag
-					}
-				}
-				*/
-			}
-
-			// Clear the screen each frame
-			renderer.clear(window);
-
-			//Doesn't work
-			renderer.draw_list(window, entity.parts, 1);
+				//
+                if (event.key.code == sf::Keyboard::W)
+                {
+                    // Set the move up flag
+                }
+                
+                if (event.key.code == sf::Keyboard::S)
+                {
+                    // Set the move down flag
+                }
+                
+                if (event.key.code == sf::Keyboard::A)
+                {
+                    // Set the move left flag
+                }
+                
+                if (event.key.code == sf::Keyboard::D)
+                {
+                    // Set the move right flag
+                //
+            }
+            //
+            // Process any key up events from the keyboard
+            if (event.type == sf::Event::KeyReleased)
+            {
+                if (event.key.code == sf::Keyboard::W)
+                {
+                    // Unset the move up flag
+                }
+                
+                if (event.key.code == sf::Keyboard::S)
+                {
+                    // Unset the move down flag
+                }
+                
+                if (event.key.code == sf::Keyboard::A)
+                {
+                    // Unset the move left flag
+                }
+                
+                if (event.key.code == sf::Keyboard::D)
+                {
+                    // Unset the move right flag
+                }   
+            }
 			//
+        }
+        
+        // Clear the screen each frame
+        renderer.clear(window);
+        
+		//Doesn't work
+        renderer.draw_list(window, entity.parts, 1);
+        //
 
 			// Draw stuff with the render engine
 			// render.draw(window, sprite);

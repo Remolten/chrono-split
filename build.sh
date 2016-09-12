@@ -1,1 +1,1 @@
-g++ -framework SFML -framework sfml-window -framework sfml-system -framework sfml-graphics -framework sfml-network -framework sfml-audio -o chrono-split.out "Chrono Split/Chrono Split/C++/Main.cpp"
+g++ -framework SFML -framework sfml-window -framework sfml-system -framework sfml-graphics -framework sfml-network -framework sfml-audio -o "Chrono Split/Debug/chrono-split.out" "Chrono Split/Chrono Split/C++/Main.cpp"
