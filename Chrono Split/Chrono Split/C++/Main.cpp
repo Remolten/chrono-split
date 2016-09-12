@@ -5,21 +5,16 @@
 //Discription:
 // An arena based fighting game in c++ and Lua 
 
-//Include Their Files
 #include <iostream> //input output
 #include <chrono> //high-res timer (chrono::high_resolution_clock::timepoint & chrono::high_resolution_clock::now())
 #include <cmath> //c-math
 #include <string> //strings
 #include <sstream> //string building
-
-// Include SFML Window module
-#include <SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>// Include SFML Window module
 
 //Include Our files
 #include "../C++/Render/render.cpp"
 #include "../C++/World/World.cpp"
-#include "../C++/Entity/Entity.cpp"
-#include "../C++/Entity/sprite.cpp"
 
 using std::cout;
 using std::cin;
