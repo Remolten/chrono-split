@@ -11,6 +11,7 @@
 #include <string> //strings
 #include <sstream> //string building
 #include <SFML/Graphics.hpp>// Include SFML Window module
+#include <SFML/Graphics/Texture.hpp>
 
 //Include Our files
 #include "../C++/Render/render.cpp"
@@ -71,9 +72,10 @@ int main()
 	// Don't do this code in Main
 	// Define a new sprite + entity container for testing
 	sf::Texture texture;
-	texture.loadFromFile("Chrono Split/Chrono Split/Assets/enemyBlue3.png");
+	texture.loadFromFile("../Chrono Split/Assets/enemyBlue3.png");
 	entity::Sprite sprite = entity::Sprite(); //removed texture constructor due to commpile error
-	sprite.addImage("basic", texture);
+	sprite.addImage("basic", texture); 
+	sprite.setTexture(texture); //sets texture
 	entity::Sprite sprites[1] = { sprite };
 	entity::Entity entity(sprites);
 	//
@@ -163,7 +165,6 @@ int main()
 			// Actually push all draw calls to the display
 			renderer.display(window);
 		}
-
-		return 0;
 	}
+	return 0;
 }

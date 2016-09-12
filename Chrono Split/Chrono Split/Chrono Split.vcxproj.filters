@@ -46,4 +46,9 @@
   <ItemGroup>
     <Text Include="Assets\Assets.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\enemyBlue3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
