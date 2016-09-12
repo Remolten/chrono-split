@@ -39,13 +39,8 @@ std::string Time()
 	double times = time.count();
 
 	//parse into string
-	int units[4];
+	int units[4] = { (int)trunc((times / (3600))),(int)trunc(((times)-(3600 * units[0])) / (60)),(int)trunc((times - ((3600 * units[0]) + (60 * units[1])))),(int)trunc((times - trunc(times)) * 1000) };
 
-	units[0] = (int)trunc((times / (3600))); //gets hours
-	units[1] = (int)trunc(((times)-(3600 * units[0])) / (60)); //gets minuits
-	units[2] = (int)trunc((times - ((3600 * units[0]) + (60 * units[1])))); //gets seconds
-	units[3] = (int)trunc((times - trunc(times)) * 1000); //gets parts of a sec
-	
 	stringstream str; //creates a string stream for string building
 	str << units[0] << ":" << units[1] << ":" << units[2] << "." << units[3] << " :: "; //format data into string
 
@@ -73,13 +68,15 @@ int main()
     // Pass this to any function handling movement/time
     sf::Time delta_time;
     
+	/* Don't do this code in Main
     // Define a new sprite + entity container for testing
-    entity::Sprite sprite;
     sf::Texture texture;
     texture.loadFromFile("Chrono Split/Chrono Split/Assets/enemyBlue3.png");
+    entity::Sprite sprite(texture);
     sprite.addImage("basic", texture);
     entity::Sprite sprites[1] = {sprite};
     entity::Entity entity(sprites);
+	*/
     
     // Run the program as long as the window is open
     while (window.isOpen())
@@ -151,19 +148,22 @@ int main()
         }
         
         // Clear the screen each frame
-        renderer.clear(&window);
+        renderer.clear(window);
         
-        renderer.draw(&window, entity.parts[0]);
+		/*//Doesn't work
+        renderer.draw_list(window, entity.parts, 1);
+        */
+
         // Draw stuff with the render engine
-        // render.draw(sprite);
+        // render.draw(window, sprite);
         // or
-        // renderer.draw_list(sprites_list);
+        // renderer.draw_list(window, sprites_list, sprites_list_length);
         
-        // Draw a green circle
-        //renderer.draw_green_circle(&window);
+        // Draw a green circle and red rect
+        //renderer.draw_green_circle(window);
         
         // Actually push all draw calls to the display
-        renderer.display(&window);
+        renderer.display(window);
     }
     
 	return 0;
