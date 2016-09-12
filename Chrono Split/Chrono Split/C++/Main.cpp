@@ -150,7 +150,7 @@ int main()
         renderer.clear(window);
         
 		
-        renderer.draw_list(window, entity.parts, 1);
+        renderer.draw_list(window, entity.getSprites(), 1);
 
         // Draw stuff with the render engine
         // render.draw(window, sprite);

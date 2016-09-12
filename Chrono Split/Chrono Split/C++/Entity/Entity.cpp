@@ -30,11 +30,10 @@ namespace entity
 			centerVelocityY = 0;
 		}
 
-		//Return array of Sprites
-        // Note: this doesn't work atm
-		entity::Sprite getSprites()
+		// Return the entity's array of sprites as a pointer value
+		entity::Sprite *getSprites()
 		{
-			return *parts;
+			return parts;
 		}
 	};
 }
