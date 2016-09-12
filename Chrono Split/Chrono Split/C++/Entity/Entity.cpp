@@ -30,6 +30,16 @@ namespace entity
 			centerVelocityY = 0;
 		}
 
+		void setPosition(int x, int y) // sets entity members position
+		{
+			for (int i = 0; i < 1; ++i) // needs fixed
+			{
+				parts[i].setPosition(x, y);
+			}
+			centerX = x;
+			centerY = y;
+		}
+
 		// Return the entity's array of sprites as a pointer value
 		entity::Sprite *getSprites()
 		{
