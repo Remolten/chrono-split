@@ -18,7 +18,6 @@ namespace world
 	struct World
 	{
 		//Variables
-		world::Map *map;
 		std::chrono::high_resolution_clock::time_point ProgStartTime = std::chrono::high_resolution_clock::now();
 
 		std::string Time()
@@ -159,12 +158,6 @@ namespace world
 				// Actually push all draw calls to the display
 				renderer.display(window);
 			}
-		}
-
-		//Destructors
-		~World()
-		{
-			//delete map;
 		}
 
 	};
