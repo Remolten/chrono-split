@@ -79,8 +79,8 @@ namespace world
 			sprite1.setColor(sf::Color(000, 255, 000, 255)); // color of part
 
 			entity::Sprite sprites[2] = { sprite, sprite1 };
-			entity::Entity entity(sprites);
-
+			entity::Entity entity0(sprites);
+			
 			// attempt to make sprite #2
 			// Define Outer Part (Un colored)
 			sf::Texture texture2;
@@ -101,8 +101,27 @@ namespace world
 			entity::Sprite sprites1[2] = { sprite2, sprite3 };
 			entity::Entity entity1(sprites1);
 			entity1.setPosition(150, 000);
+			
+			// attempt to make sprite #3
+			// Define Outer Part (Un colored)
+			sf::Texture texture4;
+			texture4.loadFromFile("../Chrono Split/Assets/enemyPartLight.png");
+			entity::Sprite sprite4;
+			sprite4.addImage("body", texture4);
+			sprite4.switchTextureTo("body");
+			sprite4.setColor(sf::Color(250, 250, 255, 255));
 
+			// Define Inner Part (colored)
+			sf::Texture texture5;
+			texture5.loadFromFile("../Chrono Split/Assets/enemyPartDark.png");
+			entity::Sprite sprite5;
+			sprite5.addImage("color", texture5);
+			sprite5.switchTextureTo("color");
+			sprite5.setColor(sf::Color(000, 000, 255, 255)); // color of part
 
+			entity::Sprite sprites2[2] = { sprite4, sprite5 };
+			entity::Entity entity2(sprites2);
+			entity2.setPosition(300, 000);
 			//
 			
 
@@ -178,8 +197,9 @@ namespace world
 				// Clear the screen each frame
 				renderer.clear(window);
 
-				renderer.draw_list(window, entity.parts, 2);
+				renderer.draw_list(window, entity0.parts, 2);
 				renderer.draw_list(window, entity1.parts, 2);
+				renderer.draw_list(window, entity2.parts, 2);
 				
 
 				// Draw stuff with the render engine

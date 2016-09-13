@@ -32,12 +32,18 @@ namespace entity
 
 		void setPosition(int x, int y) // sets entity members position
 		{
-			for (int i = 0; i < 1; ++i) // needs fixed
+			for (int i = 0; i < 2; ++i) // needs fixed
 			{
 				parts[i].setPosition(x, y);
 			}
 			centerX = x;
 			centerY = y;
+		}
+
+
+		void setColor(sf::Color color, int sprite) // sets sprite color
+		{
+			parts[sprite].setColor(color);
 		}
 
 		// Return the entity's array of sprites as a pointer value
