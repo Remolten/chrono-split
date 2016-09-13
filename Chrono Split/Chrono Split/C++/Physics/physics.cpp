@@ -1,7 +1,8 @@
+#include <SFML\Graphics.hpp>
+
+
 namespace physics
 {
-	struct Physics
-	{
 
-	};
+	
 }

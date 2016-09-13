@@ -1,5 +1,8 @@
 #include "../World/Map.cpp"
 #include "../Entity/Entity.cpp"
+#include "../Render/render.cpp"
+#include "../Physics/physics.cpp"
+
 #include <SFML/Graphics.hpp>
 #include <iostream> //input output
 #include <chrono> //high-res timer (chrono::high_resolution_clock::timepoint & chrono::high_resolution_clock::now())
@@ -7,7 +10,6 @@
 #include <string> //strings
 #include <sstream> //string building
 #include <SFML/Graphics.hpp>// Include SFML Window module
-#include "../Render/render.cpp"
 
 using std::cout;
 using std::cin;
@@ -15,9 +17,12 @@ using std::endl;
 
 namespace world
 {
+
 	struct World
 	{
 		//Variables
+		sf::Vector2f gravity = sf::Vector2f(0.f, 1.f); //default no gravity
+
 		std::chrono::high_resolution_clock::time_point ProgStartTime = std::chrono::high_resolution_clock::now();
 
 		std::string Time()
@@ -37,6 +42,11 @@ namespace world
 			str << units[0] << ":" << units[1] << ":" << units[2] << "." << units[3] << " :: "; //format data into string
 
 			return str.str(); //returns time string
+		}
+
+		void setGravity(sf::Vector2f Gravity) //Sets gravity to a vector (x,y)
+		{
+			gravity = Gravity;
 		}
 
 		//Constructor
@@ -80,6 +90,8 @@ namespace world
 
 			entity::Sprite sprites[2] = { sprite, sprite1 };
 			entity::Entity entity0(sprites);
+			entity0.setPosition(sf::Vector2f(000, 000));
+			entity0.setVelocity(sf::Vector2f(0, 1));
 			
 			// attempt to make sprite #2
 			// Define Outer Part (Un colored)
@@ -100,7 +112,8 @@ namespace world
 
 			entity::Sprite sprites1[2] = { sprite2, sprite3 };
 			entity::Entity entity1(sprites1);
-			entity1.setPosition(150, 000);
+			entity1.setPosition(sf::Vector2f(000, 000));
+			entity1.setVelocity(sf::Vector2f(1, 0));
 			
 			// attempt to make sprite #3
 			// Define Outer Part (Un colored)
@@ -121,9 +134,9 @@ namespace world
 
 			entity::Sprite sprites2[2] = { sprite4, sprite5 };
 			entity::Entity entity2(sprites2);
-			entity2.setPosition(300, 000);
+			entity2.setPosition(sf::Vector2f(000, 000));
+			entity2.setVelocity(sf::Vector2f(1, 1));
 			//
-			
 
 			// Run the program as long as the window is open
 			while (window.isOpen())
@@ -138,6 +151,10 @@ namespace world
 					// "Close Requested" event: Close the window
 					if (event.type == sf::Event::Closed)
 						window.close();
+
+					// To do Set aspect ratio bassed off of window size
+					if (event.type == sf::Event::Resized) 
+						//window.((window.getSize().x)/(window.getSize().y));
 
 					// Process any key down events from the keyboard
 					if (event.type == sf::Event::KeyPressed)
@@ -197,11 +214,16 @@ namespace world
 				// Clear the screen each frame
 				renderer.clear(window);
 
+				//move tic
+				entity0.move(window, gravity);
+				entity1.move(window, gravity);
+				entity2.move(window, gravity);
+
 				renderer.draw_list(window, entity0.parts, 2);
 				renderer.draw_list(window, entity1.parts, 2);
 				renderer.draw_list(window, entity2.parts, 2);
 				
-
+				cout << clock.getElapsedTime().asMicroseconds() << endl;
 				// Draw stuff with the render engine
 				// render.draw(window, sprite);
 				// or
