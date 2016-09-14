@@ -1,13 +1,14 @@
 #include "../World/Map.cpp"
 #include "../Entity/Entity.cpp"
-#include <SFML/Graphics.hpp>
+#include "../Render/render.cpp"
+#include "../Physics/physics.cpp"
+
 #include <iostream> //input output
 #include <chrono> //high-res timer (chrono::high_resolution_clock::timepoint & chrono::high_resolution_clock::now())
 #include <cmath> //c-math
 #include <string> //strings
 #include <sstream> //string building
 #include <SFML/Graphics.hpp>// Include SFML Window module
-#include "../Render/render.cpp"
 
 using std::cout;
 using std::cin;
@@ -15,9 +16,12 @@ using std::endl;
 
 namespace world
 {
+
 	struct World
 	{
 		//Variables
+		sf::Vector2f gravity = sf::Vector2f(0.f, 1.f); //default no gravity
+
 		std::chrono::high_resolution_clock::time_point ProgStartTime = std::chrono::high_resolution_clock::now();
 
 		std::string Time()
@@ -37,6 +41,11 @@ namespace world
 			str << units[0] << ":" << units[1] << ":" << units[2] << "." << units[3] << " :: "; //format data into string
 
 			return str.str(); //returns time string
+		}
+
+		void setGravity(sf::Vector2f Gravity) //Sets gravity to a vector (x,y)
+		{
+			gravity = Gravity;
 		}
 
 		//Constructor
@@ -65,7 +74,11 @@ namespace world
 			// Pass this to any function handling movement/time
 			sf::Time delta_time;
 			
-            // Below is the process of creating an entity
+            /*
+            //
+            //
+            //
+            // Below is the process of properly creating an entity
 			// Create textures we need
             sf::Texture test_texture;
             test_texture.loadFromFile("../Chrono Split/Assets/enemyBlue3.png");
@@ -77,6 +90,48 @@ namespace world
             // Then create our actual entity object
             // Note: last argument is the size of the 2 arrays (they must be same size obviously)
 			entity::Entity entity(texture_names, textures, 1);
+            //
+            //
+            //
+            */
+			
+			// Define Outer Part (Un colored)
+			sf::Texture enemyLightTexture;
+			enemyLightTexture.loadFromFile("../Chrono Split/Assets/enemyPartLight.png");
+            sf::Texture enemyDarkTexture;
+			enemyDarkTexture.loadFromFile("../Chrono Split/Assets/enemyPartDark.png");
+            
+            std::string texture_names[2] = {"Light", "Dark"};
+            sf::Texture *textures[2] = {&enemyLightTexture, &enemyDarkTexture};
+            
+			// TODO create function that returns a sprite by name
+			//sprite.setColor(sf::Color(250, 250, 255, 255));
+
+			// Define Inner Part (colored)
+			//sprite1.setColor(sf::Color(000, 255, 000, 255)); // color of part
+
+			entity::Entity entity0(texture_names, textures, 2);
+			entity0.setPosition(sf::Vector2f(000, 000));
+			entity0.setVelocity(sf::Vector2f(0, 1));
+			
+
+			//sprite2.setColor(sf::Color(250, 250, 255, 255));
+			//sprite3.setColor(sf::Color(255, 000, 000, 255)); // color of part
+
+			entity::Entity entity1(texture_names, textures, 2);
+			entity1.setPosition(sf::Vector2f(000, 000));
+			entity1.setVelocity(sf::Vector2f(2, 0));
+			
+			// attempt to make sprite #3
+			// Define Outer Part (Un colored)
+			//sprite4.setColor(sf::Color(250, 250, 255, 255));
+
+			// Define Inner Part (colored)
+			//sprite5.setColor(sf::Color(000, 000, 255, 255)); // color of part
+
+			entity::Entity entity2(texture_names, textures, 2);
+			entity2.setPosition(sf::Vector2f(000, 000));
+			entity2.setVelocity(sf::Vector2f(1, 1));
 
 			// Run the program as long as the window is open
 			while (window.isOpen())
@@ -91,6 +146,10 @@ namespace world
 					// "Close Requested" event: Close the window
 					if (event.type == sf::Event::Closed)
 						window.close();
+
+					// To do Set aspect ratio bassed off of window size
+					if (event.type == sf::Event::Resized)
+						window.setSize(window.getSize());
 
 					// Process any key down events from the keyboard
 					if (event.type == sf::Event::KeyPressed)
@@ -149,10 +208,16 @@ namespace world
 
 				// Clear the screen each frame
 				renderer.clear(window);
-
-				renderer.draw_list(window, entity.getSprites(), 1);
 				
+				//move tic
+				entity0.move(window, gravity);
+				entity1.move(window, gravity);
+				entity2.move(window, gravity);
 
+				renderer.draw_list(window, entity0.getSprites(), 2);
+				renderer.draw_list(window, entity1.getSprites(), 2);
+				renderer.draw_list(window, entity2.getSprites(), 2);
+				
 				// Draw stuff with the render engine
 				// render.draw(window, sprite);
 				// or

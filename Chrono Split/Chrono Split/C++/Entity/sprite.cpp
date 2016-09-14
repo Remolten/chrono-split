@@ -14,12 +14,6 @@ namespace entity
 
 		// Stores an images with string name to a map
 		std::unordered_map<std::string, sf::Texture*> images;
-        
-		Sprite()
-		{
-			velocityX = 0;
-			velocityY = 0;
-		}
 
 		// Adds an image with a name to the map
 		void addImage(std::string name, sf::Texture *texture)
