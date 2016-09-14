@@ -65,12 +65,17 @@ namespace world
 			// Pass this to any function handling movement/time
 			sf::Time delta_time;
 			
-			// Define a new sprite + entity container for testing
+            // Below is the process of creating an entity
+			// Create textures we need
             sf::Texture test_texture;
             test_texture.loadFromFile("../Chrono Split/Assets/enemyBlue3.png");
-            
+            // Make 2 arrays
+            // 1 with the names of the parts
             std::string texture_names[1] = {"Body"};
+            // The other with pointers to the textures
             sf::Texture *textures[1] = {&test_texture};
+            // Then create our actual entity object
+            // Note: last argument is the size of the 2 arrays (they must be same size obviously)
 			entity::Entity entity(texture_names, textures, 1);
 
 			// Run the program as long as the window is open
