@@ -1,13 +1,12 @@
 #include "../Entity/sprite.cpp"
 #include <string>
-
 #pragma once
 
 namespace entity
 {
 	struct Entity
 	{    
-        //Variables
+        // Variables
 		sf::Vector2f topLeft;
 		sf::Vector2f size;
 		entity::Sprite *parts;
@@ -17,23 +16,21 @@ namespace entity
         // Takes an array of arrays of the form [[texture_file_path, texture_name], ...]
 		Entity(std::string texture_names[], sf::Texture *textures[], unsigned int number_of_sprites)
 		{
-            // Basic stuff
+            // Variables
             topLeft = sf::Vector2f(0.f, 0.f);
 			velocity = sf::Vector2f(0.f, 0.f);
-            
-            // Make the sprite container
-            parts = new entity::Sprite[number_of_sprites];
+            parts = new entity::Sprite[number_of_sprites];// Make the sprite container
             
 			// Make the sprite and textures and store in the Entity container
             for (unsigned int i = 0; i < number_of_sprites; i++)
             {
-                // Create sprite and assign images
+                //  Create sprite and assign images
                 entity::Sprite sprite;
                 sprite.addImage(texture_names[i], textures[i]);
                 sprite.switchTextureTo(texture_names[i]);
                 parts[i] = sprite;
                 
-                // Set the size
+                //  Set the size
                 sf::Vector2u localSize = textures[i]->getSize();
                 
                 if (size.x <= localSize.x)
@@ -47,22 +44,24 @@ namespace entity
             }
         }
 
-		void setPosition(sf::Vector2f position) // sets entity members position
+		// Sets entity members position
+		void setPosition(sf::Vector2f position) 
 		{
-			for (int i = 0; i < 2; ++i) // needs fixed
+			for (int i = 0; i < 2; ++i) //  needs fixed
 			{
 				parts[i].setPosition(position);
 			}
 			topLeft = position;
 		}
 
-
-		void setColor(sf::Color color, int sprite) // sets sprite color
+		// Sets sprite color
+		void setColor(sf::Color color, int sprite)
 		{
 			parts[sprite].setColor(color);
 		}
 
-		void move(sf::RenderWindow &window, sf::Vector2f gravity) //Move tick for an entity
+		// Move tick for an entity
+		void move(sf::RenderWindow &window, sf::Vector2f gravity) 
 		{
 			velocity.x = velocity.x + gravity.x;
 			velocity.y = velocity.y + gravity.y;
@@ -92,7 +91,8 @@ namespace entity
 			setPosition(topLeft);
 		}
 
-		void setVelocity(sf::Vector2f Velocity) //sets velocity to a vector (x,y)
+		// Sets velocity to a vector (x,y)
+		void setVelocity(sf::Vector2f Velocity) 
 		{
 			velocity = Velocity;
 		}
@@ -106,8 +106,7 @@ namespace entity
         // Destructor
         ~Entity()
         {
-            // Explicitly delete parts when finished to avoid memory corruption
-            delete [] parts;
+            delete[] parts;// Explicitly delete parts when finished to avoid memory corruption
         }
 	};
 }

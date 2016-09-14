@@ -1,19 +1,16 @@
 #include <SFML/Graphics.hpp>
 #include <unordered_map>
 #include <string>
-
 #pragma once
 
 namespace entity
 {
 	struct Sprite : sf::Sprite
 	{
-		// Unique Data
+		// Variables
 		int velocityX;
 		int velocityY;
-
-		// Stores an images with string name to a map
-		std::unordered_map<std::string, sf::Texture*> images;
+		std::unordered_map<std::string, sf::Texture*> images;//  Stores an images with string name to a map
 
 		// Adds an image with a name to the map
 		void addImage(std::string name, sf::Texture *texture)
@@ -31,7 +28,6 @@ namespace entity
 		bool switchTextureTo(std::string name)
 		{
             setTexture(*images[name]);
-            
             return true;
 		}
 	};

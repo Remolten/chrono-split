@@ -3,11 +3,11 @@
 #include "../Render/render.cpp"
 #include "../Physics/physics.cpp"
 
-#include <iostream> //input output
-#include <chrono> //high-res timer (chrono::high_resolution_clock::timepoint & chrono::high_resolution_clock::now())
-#include <cmath> //c-math
-#include <string> //strings
-#include <sstream> //string building
+#include <iostream>
+#include <chrono> // High-res timer (chrono::high_resolution_clock::timepoint & chrono::high_resolution_clock::now())
+#include <cmath>
+#include <string>
+#include <sstream>
 #include <SFML/Graphics.hpp>// Include SFML Window module
 
 using std::cout;
@@ -19,36 +19,32 @@ namespace world
 
 	struct World
 	{
-		//Variables
-		sf::Vector2f gravity = sf::Vector2f(0.f, 1.f); //default no gravity
+		// Variables
+		sf::Vector2f gravity = sf::Vector2f(0.f, 1.f); // Default no gravity
 
 		std::chrono::high_resolution_clock::time_point ProgStartTime = std::chrono::high_resolution_clock::now();
 
 		std::string Time()
 		{
-			using namespace std::chrono; //for easy code
-			using namespace std;
-
-			high_resolution_clock::time_point now = high_resolution_clock::now(); // records now
-			duration<double> time = duration_cast<duration <double> >(now - ProgStartTime); // finds change in time
-
+			std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now(); // Records now
+			std::chrono::duration<double> time = std::chrono::duration_cast<std::chrono::duration <double>>(now - ProgStartTime); // Change in time
 			double times = time.count();
 
-			//parse into string
+			// Parse into string
 			int units[4] = { (int)trunc((times / (3600))),(int)trunc(((times)-(3600 * units[0])) / (60)),(int)trunc((times - ((3600 * units[0]) + (60 * units[1])))),(int)trunc((times - trunc(times)) * 1000) };
 
-			stringstream str; //creates a string stream for string building
-			str << units[0] << ":" << units[1] << ":" << units[2] << "." << units[3] << " :: "; //format data into string
+			std::stringstream str; // Creates a string stream for string building
+			str << units[0] << ":" << units[1] << ":" << units[2] << "." << units[3] << " :: "; // format data into string
 
-			return str.str(); //returns time string
+			return str.str(); // Returns time string
 		}
 
-		void setGravity(sf::Vector2f Gravity) //Sets gravity to a vector (x,y)
+		void setGravity(sf::Vector2f Gravity) // Sets gravity to a vector (x,y)
 		{
 			gravity = Gravity;
 		}
 
-		//Constructor
+		// Constructor
 		World()
 		{
         }
@@ -75,9 +71,6 @@ namespace world
 			sf::Time delta_time;
 			
             /*
-            //
-            //
-            //
             // Below is the process of properly creating an entity
 			// Create textures we need
             sf::Texture test_texture;
@@ -90,9 +83,6 @@ namespace world
             // Then create our actual entity object
             // Note: last argument is the size of the 2 arrays (they must be same size obviously)
 			entity::Entity entity(texture_names, textures, 1);
-            //
-            //
-            //
             */
 			
 			// Define Outer Part (Un colored)
@@ -105,10 +95,10 @@ namespace world
             sf::Texture *textures[2] = {&enemyLightTexture, &enemyDarkTexture};
             
 			// TODO create function that returns a sprite by name
-			//sprite.setColor(sf::Color(250, 250, 255, 255));
+			// sprite.setColor(sf::Color(250, 250, 255, 255));
 
 			// Define Inner Part (colored)
-			//sprite1.setColor(sf::Color(000, 255, 000, 255)); // color of part
+			// sprite1.setColor(sf::Color(000, 255, 000, 255)); // color of part
 
 			entity::Entity entity0(texture_names, textures, 2);
 			entity0.setColor(sf::Color(250, 250, 255, 255), 0);
@@ -153,7 +143,7 @@ namespace world
 						cout << Time() << "Keypress: " << event.key.code << endl; // log keys
 
 						// Game input should not be handled in main
-                        //Send the input to the World class later
+                        // Send the input to the World class later
                         /*
                         if (event.key.code == sf::Keyboard::W)
                         {
@@ -205,7 +195,7 @@ namespace world
 				// Clear the screen each frame
 				renderer.clear(window);
 				
-				//move tic
+				// Move tic
 				entity0.move(window, gravity);
 				entity1.move(window, gravity);
 				entity2.move(window, gravity);
@@ -213,14 +203,6 @@ namespace world
 				renderer.draw_list(window, entity0.getSprites(), 2);
 				renderer.draw_list(window, entity1.getSprites(), 2);
 				renderer.draw_list(window, entity2.getSprites(), 2);
-				
-				// Draw stuff with the render engine
-				// render.draw(window, sprite);
-				// or
-				// renderer.draw_list(window, sprites_list, sprites_list_length);
-
-				// Draw a green circle and red rect
-				//renderer.draw_green_circle(window);
 
 				// Actually push all draw calls to the display
 				renderer.display(window);

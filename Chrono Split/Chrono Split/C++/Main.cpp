@@ -1,9 +1,9 @@
-//Project: Chrono Split
-//Authors: Remington, Lucas, and Thomas Queenan
-//Written: 09/07/16 to ??/??/16
+// Project: Chrono Split
+// Authors: Remington, Lucas, and Thomas Queenan
+// Written: 09/07/16 to ??/??/16
 
-//Discription:
-// An arena based fighting game in c++ and Lua 
+// Discription:
+//  An arena based fighting game in C++ and Lua 
 
 #include "../C++/World/World.cpp"
 
