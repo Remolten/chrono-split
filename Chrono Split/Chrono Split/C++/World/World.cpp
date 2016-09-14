@@ -20,7 +20,7 @@ namespace world
 	struct World
 	{
 		//Variables
-		sf::Vector2f gravity = sf::Vector2f(0.f, 1.f); //default no gravity
+		sf::Vector2f gravity = sf::Vector2f(0.f, 0.f); //default no gravity
 
 		std::chrono::high_resolution_clock::time_point ProgStartTime = std::chrono::high_resolution_clock::now();
 
@@ -46,6 +46,11 @@ namespace world
 		void setGravity(sf::Vector2f Gravity) //Sets gravity to a vector (x,y)
 		{
 			gravity = Gravity;
+		}
+
+		void setGravity(float x, float y) //Sets Gravity to a pair of floats (x,y)
+		{
+			gravity = sf::Vector2f(x, y);
 		}
 
 		//Constructor
@@ -90,7 +95,7 @@ namespace world
 			entity::Sprite sprites[2] = { sprite, sprite1 };
 			entity::Entity entity0(sprites);
 			entity0.setPosition(sf::Vector2f(000, 000));
-			entity0.setVelocity(sf::Vector2f(0, 1));
+			entity0.setVelocity(sf::Vector2f(1, 1));
 			
 			// attempt to make sprite #2
 			// Define Outer Part (Un colored)
@@ -111,8 +116,8 @@ namespace world
 
 			entity::Sprite sprites1[2] = { sprite2, sprite3 };
 			entity::Entity entity1(sprites1);
-			entity1.setPosition(sf::Vector2f(000, 000));
-			entity1.setVelocity(sf::Vector2f(2, 0));
+			entity1.setPosition(sf::Vector2f(150, 000));
+			entity1.setVelocity(sf::Vector2f(2, 2));
 			
 			// attempt to make sprite #3
 			// Define Outer Part (Un colored)
@@ -133,9 +138,12 @@ namespace world
 
 			entity::Sprite sprites2[2] = { sprite4, sprite5 };
 			entity::Entity entity2(sprites2);
-			entity2.setPosition(sf::Vector2f(000, 000));
-			entity2.setVelocity(sf::Vector2f(1, 1));
+			entity2.setPosition(sf::Vector2f(300, 000));
+			entity2.setVelocity(sf::Vector2f(3, 3));
+			entity2.setRotation(180.f);
 			//
+
+			setGravity(0, .1);
 
 			// Run the program as long as the window is open
 			while (window.isOpen())

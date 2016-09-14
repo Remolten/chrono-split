@@ -19,7 +19,7 @@ namespace entity
 			topLeft = sf::Vector2f(0.f, 0.f);
 			velocity = sf::Vector2f(0.f, 0.f);
 			parts = Sprites;
-			for(int i = 0; i < 2; ++i)
+			for(int i = 0; i < 2; ++i) //finds max size of textures
 			{
 				sf::Texture img = *Sprites[i].getTexture();
 				sf::Vector2u localSize = img.getSize();
@@ -45,6 +45,13 @@ namespace entity
 			topLeft = position;
 		}
 
+		void setRotation(float degrees) //Sets rotation of an entity //not working
+		{
+			for (int i = 0; i < 2; ++i)
+			{
+				parts[i].setRotation(degrees);
+			}
+		}
 
 		void setColor(sf::Color color, int sprite) // sets sprite color
 		{
@@ -53,10 +60,14 @@ namespace entity
 
 		void move(sf::RenderWindow &window, sf::Vector2f gravity) //Move tick for an entity
 		{
-			velocity.x = velocity.x + gravity.x;
+			//gravity
+			velocity.x = velocity.x + gravity.x; 
 			velocity.y = velocity.y + gravity.y;
+
+			//movement
 			topLeft = topLeft + velocity;
 
+			//bounds
 			if (topLeft.x > window.getSize().x - size.x)
 			{
 				topLeft.x = window.getSize().x - size.x;
@@ -84,6 +95,11 @@ namespace entity
 		void setVelocity(sf::Vector2f Velocity) //sets velocity to a vector (x,y)
 		{
 			velocity = Velocity;
+		}
+
+		void setVelocity(float x, float y) //sets velocity to a pair of ints (x,y)
+		{
+			velocity = sf::Vector2f(x, y);
 		}
 
 		// Return the entity's array of sprites as a pointer value
