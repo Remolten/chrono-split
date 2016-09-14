@@ -111,25 +111,21 @@ namespace world
 			//sprite1.setColor(sf::Color(000, 255, 000, 255)); // color of part
 
 			entity::Entity entity0(texture_names, textures, 2);
+			entity0.setColor(sf::Color(250, 250, 255, 255), 0);
+			entity0.setColor(sf::Color(255, 000, 000, 255), 1);
 			entity0.setPosition(sf::Vector2f(000, 000));
 			entity0.setVelocity(sf::Vector2f(0, 1));
-			
-
-			//sprite2.setColor(sf::Color(250, 250, 255, 255));
-			//sprite3.setColor(sf::Color(255, 000, 000, 255)); // color of part
 
 			entity::Entity entity1(texture_names, textures, 2);
+			entity1.setColor(sf::Color(250, 250, 255, 255), 0);
+			entity1.setColor(sf::Color(000, 255, 000, 255), 1);
 			entity1.setPosition(sf::Vector2f(000, 000));
 			entity1.setVelocity(sf::Vector2f(2, 0));
 			
 			// attempt to make sprite #3
-			// Define Outer Part (Un colored)
-			//sprite4.setColor(sf::Color(250, 250, 255, 255));
-
-			// Define Inner Part (colored)
-			//sprite5.setColor(sf::Color(000, 000, 255, 255)); // color of part
-
 			entity::Entity entity2(texture_names, textures, 2);
+			entity2.setColor(sf::Color(250, 250, 255, 255), 0);
+			entity2.setColor(sf::Color(000, 000, 255, 255), 1);
 			entity2.setPosition(sf::Vector2f(000, 000));
 			entity2.setVelocity(sf::Vector2f(1, 1));
 
