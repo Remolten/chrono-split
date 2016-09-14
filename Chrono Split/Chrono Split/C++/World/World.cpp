@@ -20,7 +20,7 @@ namespace world
 	struct World
 	{
 		//Variables
-		sf::Vector2f gravity = sf::Vector2f(0.f, 0.f); //default no gravity
+		sf::Vector2f gravity = sf::Vector2f(0.f, 1.f); //default no gravity
 
 		std::chrono::high_resolution_clock::time_point ProgStartTime = std::chrono::high_resolution_clock::now();
 
@@ -48,14 +48,13 @@ namespace world
 			gravity = Gravity;
 		}
 
-		void setGravity(float x, float y) //Sets Gravity to a pair of floats (x,y)
-		{
-			gravity = sf::Vector2f(x, y);
-		}
-
 		//Constructor
 		World()
 		{
+        }
+        
+        void run()
+        {
 			// Creates a new window object stored in the "window" variable
 			sf::RenderWindow window(sf::VideoMode(800, 600), "Chrono Split");
 			cout << Time() << "Window initilized" << endl;
@@ -74,76 +73,65 @@ namespace world
 			// Store the delta time
 			// Pass this to any function handling movement/time
 			sf::Time delta_time;
-
+			
+            /*
+            //
+            //
+            //
+            // Below is the process of properly creating an entity
+			// Create textures we need
+            sf::Texture test_texture;
+            test_texture.loadFromFile("../Chrono Split/Assets/enemyBlue3.png");
+            // Make 2 arrays
+            // 1 with the names of the parts
+            std::string texture_names[1] = {"Body"};
+            // The other with pointers to the textures
+            sf::Texture *textures[1] = {&test_texture};
+            // Then create our actual entity object
+            // Note: last argument is the size of the 2 arrays (they must be same size obviously)
+			entity::Entity entity(texture_names, textures, 1);
+            //
+            //
+            //
+            */
 			
 			// Define Outer Part (Un colored)
-			sf::Texture texture;
-			texture.loadFromFile("../Chrono Split/Assets/enemyPartLight.png");
-			entity::Sprite sprite;
-			sprite.addImage("body", texture);
-			sprite.switchTextureTo("body");
-			sprite.setColor(sf::Color(250, 250, 255, 255));
+			sf::Texture enemyLightTexture;
+			enemyLightTexture.loadFromFile("../Chrono Split/Assets/enemyPartLight.png");
+            sf::Texture enemyDarkTexture;
+			enemyDarkTexture.loadFromFile("../Chrono Split/Assets/enemyPartDark.png");
+            
+            std::string texture_names[2] = {"Light", "Dark"};
+            sf::Texture *textures[2] = {&enemyLightTexture, &enemyDarkTexture};
+            
+			// TODO create function that returns a sprite by name
+			//sprite.setColor(sf::Color(250, 250, 255, 255));
 
 			// Define Inner Part (colored)
-			sf::Texture texture1;
-			texture1.loadFromFile("../Chrono Split/Assets/enemyPartDark.png");
-			entity::Sprite sprite1;
-			sprite1.addImage("color", texture1);
-			sprite1.switchTextureTo("color");
-			sprite1.setColor(sf::Color(000, 255, 000, 255)); // color of part
+			//sprite1.setColor(sf::Color(000, 255, 000, 255)); // color of part
 
-			entity::Sprite sprites[2] = { sprite, sprite1 };
-			entity::Entity entity0(sprites);
+			entity::Entity entity0(texture_names, textures, 2);
 			entity0.setPosition(sf::Vector2f(000, 000));
-			entity0.setVelocity(sf::Vector2f(1, 1));
+			entity0.setVelocity(sf::Vector2f(0, 1));
 			
-			// attempt to make sprite #2
-			// Define Outer Part (Un colored)
-			sf::Texture texture2;
-			texture2.loadFromFile("../Chrono Split/Assets/enemyPartLight.png");
-			entity::Sprite sprite2;
-			sprite2.addImage("body", texture2);
-			sprite2.switchTextureTo("body");
-			sprite2.setColor(sf::Color(250, 250, 255, 255));
 
-			// Define Inner Part (colored)
-			sf::Texture texture3;
-			texture3.loadFromFile("../Chrono Split/Assets/enemyPartDark.png");
-			entity::Sprite sprite3;
-			sprite3.addImage("color", texture3);
-			sprite3.switchTextureTo("color");
-			sprite3.setColor(sf::Color(255, 000, 000, 255)); // color of part
+			//sprite2.setColor(sf::Color(250, 250, 255, 255));
+			//sprite3.setColor(sf::Color(255, 000, 000, 255)); // color of part
 
-			entity::Sprite sprites1[2] = { sprite2, sprite3 };
-			entity::Entity entity1(sprites1);
-			entity1.setPosition(sf::Vector2f(150, 000));
-			entity1.setVelocity(sf::Vector2f(2, 2));
+			entity::Entity entity1(texture_names, textures, 2);
+			entity1.setPosition(sf::Vector2f(000, 000));
+			entity1.setVelocity(sf::Vector2f(2, 0));
 			
 			// attempt to make sprite #3
 			// Define Outer Part (Un colored)
-			sf::Texture texture4;
-			texture4.loadFromFile("../Chrono Split/Assets/enemyPartLight.png");
-			entity::Sprite sprite4;
-			sprite4.addImage("body", texture4);
-			sprite4.switchTextureTo("body");
-			sprite4.setColor(sf::Color(250, 250, 255, 255));
+			//sprite4.setColor(sf::Color(250, 250, 255, 255));
 
 			// Define Inner Part (colored)
-			sf::Texture texture5;
-			texture5.loadFromFile("../Chrono Split/Assets/enemyPartDark.png");
-			entity::Sprite sprite5;
-			sprite5.addImage("color", texture5);
-			sprite5.switchTextureTo("color");
-			sprite5.setColor(sf::Color(000, 000, 255, 255)); // color of part
+			//sprite5.setColor(sf::Color(000, 000, 255, 255)); // color of part
 
-			entity::Sprite sprites2[2] = { sprite4, sprite5 };
-			entity::Entity entity2(sprites2);
-			entity2.setPosition(sf::Vector2f(300, 000));
-			entity2.setVelocity(sf::Vector2f(3, 3));
-			entity2.setRotation(180.f);
-			//
-
-			setGravity(0, .1);
+			entity::Entity entity2(texture_names, textures, 2);
+			entity2.setPosition(sf::Vector2f(000, 000));
+			entity2.setVelocity(sf::Vector2f(1, 1));
 
 			// Run the program as long as the window is open
 			while (window.isOpen())
@@ -166,7 +154,7 @@ namespace world
 					// Process any key down events from the keyboard
 					if (event.type == sf::Event::KeyPressed)
 					{
-						cout << Time() << "Keypress: " << event.key.code << endl; //log keys
+						cout << Time() << "Keypress: " << event.key.code << endl; // log keys
 
 						// Game input should not be handled in main
                         //Send the input to the World class later
@@ -220,15 +208,15 @@ namespace world
 
 				// Clear the screen each frame
 				renderer.clear(window);
-
+				
 				//move tic
 				entity0.move(window, gravity);
 				entity1.move(window, gravity);
 				entity2.move(window, gravity);
 
-				renderer.draw_list(window, entity0.parts, 2);
-				renderer.draw_list(window, entity1.parts, 2);
-				renderer.draw_list(window, entity2.parts, 2);
+				renderer.draw_list(window, entity0.getSprites(), 2);
+				renderer.draw_list(window, entity1.getSprites(), 2);
+				renderer.draw_list(window, entity2.getSprites(), 2);
 				
 				// Draw stuff with the render engine
 				// render.draw(window, sprite);
@@ -241,7 +229,6 @@ namespace world
 				// Actually push all draw calls to the display
 				renderer.display(window);
 			}
-		}
-
+        }
 	};
 }
