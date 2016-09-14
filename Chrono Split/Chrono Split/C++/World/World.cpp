@@ -113,7 +113,7 @@ namespace world
 			entity::Sprite sprites1[2] = { sprite2, sprite3 };
 			entity::Entity entity1(sprites1);
 			entity1.setPosition(sf::Vector2f(000, 000));
-			entity1.setVelocity(sf::Vector2f(1, 0));
+			entity1.setVelocity(sf::Vector2f(2, 0));
 			
 			// attempt to make sprite #3
 			// Define Outer Part (Un colored)
@@ -153,8 +153,8 @@ namespace world
 						window.close();
 
 					// To do Set aspect ratio bassed off of window size
-					if (event.type == sf::Event::Resized) 
-						//window.((window.getSize().x)/(window.getSize().y));
+					if (event.type == sf::Event::Resized)
+						window.setSize(window.getSize());
 
 					// Process any key down events from the keyboard
 					if (event.type == sf::Event::KeyPressed)
@@ -223,7 +223,6 @@ namespace world
 				renderer.draw_list(window, entity1.parts, 2);
 				renderer.draw_list(window, entity2.parts, 2);
 				
-				cout << clock.getElapsedTime().asMicroseconds() << endl;
 				// Draw stuff with the render engine
 				// render.draw(window, sprite);
 				// or

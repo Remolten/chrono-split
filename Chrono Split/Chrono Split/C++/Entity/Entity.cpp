@@ -57,23 +57,23 @@ namespace entity
 			velocity.y = velocity.y + gravity.y;
 			topLeft = topLeft + velocity;
 
-			if (topLeft.x >= window.getSize().x - size.x)
+			if (topLeft.x > window.getSize().x - size.x)
 			{
 				topLeft.x = window.getSize().x - size.x;
-				velocity.x = velocity.x;
+				velocity.x = -velocity.x;
 			}
-			else if (topLeft.x <= 0.f)
+			else if (topLeft.x < 0.f)
 			{
-				topLeft.x = 0;
+				topLeft.x = 0.f;
 				velocity.x = -velocity.x;
 			}
 
-			if (topLeft.y >= window.getSize().y - size.y) //dose not work quite right
+			if (topLeft.y > window.getSize().y - size.y)
 			{
 				topLeft.y = window.getSize().y - size.y;
 				velocity.y = -velocity.y;
 			}
-			else if (topLeft.y <= 0.f)
+			else if (topLeft.y < 0.f)
 			{
 				topLeft.y = 0.f;
 				velocity.y = -velocity.y;
