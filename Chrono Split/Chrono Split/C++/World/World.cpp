@@ -3,7 +3,6 @@
 #include "../Render/render.cpp"
 #include "../Physics/physics.cpp"
 
-#include <SFML/Graphics.hpp>
 #include <iostream> //input output
 #include <chrono> //high-res timer (chrono::high_resolution_clock::timepoint & chrono::high_resolution_clock::now())
 #include <cmath> //c-math
