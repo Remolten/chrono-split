@@ -10,5 +10,6 @@
 int main()
 {
 	world::World test;
+    test.run();
 	return 0;
 }

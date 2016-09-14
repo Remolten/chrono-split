@@ -8,12 +8,12 @@ namespace entity
 {
 	struct Sprite : sf::Sprite
 	{
-		//Unique Data
+		// Unique Data
 		int velocityX;
 		int velocityY;
 
-		//Stores an images with string name to a map
-		std::unordered_map<std::string, sf::Texture> images;
+		// Stores an images with string name to a map
+		std::unordered_map<std::string, sf::Texture*> images;
         
 		Sprite()
 		{
@@ -21,31 +21,24 @@ namespace entity
 			velocityY = 0;
 		}
 
-		//Adds an image with a name to the map
-		void addImage(std::string name, sf::Texture picture)
+		// Adds an image with a name to the map
+		void addImage(std::string name, sf::Texture *texture)
 		{
-			images[name] = picture;
+            images[name] = texture;
 		}
 
-		//Retrive image by name
+		// Retrieve image by name
 		sf::Texture getImage(std::string name)
 		{
-			return images[name];
+			return *images[name];
 		}
 
-		//Change current texture, return false if dosn't texture exists
+		// Change the sprite's texture
 		bool switchTextureTo(std::string name)
 		{
-			try //Just in case name doesn't exist in the map
-			{
-				images.at(name);
-				setTexture(images[name]);
-			}
-			catch(const std::exception&)
-			{
-				return false;
-			}
-			return false;
+            setTexture(*images[name]);
+            
+            return true;
 		}
 	};
 }

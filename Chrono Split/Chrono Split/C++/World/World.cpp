@@ -42,6 +42,10 @@ namespace world
 		//Constructor
 		World()
 		{
+        }
+        
+        void run()
+        {
 			// Creates a new window object stored in the "window" variable
 			sf::RenderWindow window(sf::VideoMode(800, 600), "Chrono Split");
 			cout << Time() << "Window initilized" << endl;
@@ -60,17 +64,14 @@ namespace world
 			// Store the delta time
 			// Pass this to any function handling movement/time
 			sf::Time delta_time;
-
 			
 			// Define a new sprite + entity container for testing
-			sf::Texture texture;
-			texture.loadFromFile("../Chrono Split/Assets/enemyBlue3.png");
-			entity::Sprite sprite;
-			sprite.addImage("basic", texture);
-            sprite.switchTextureTo("basic");
-			entity::Sprite sprites[1] = {sprite};
-			entity::Entity entity(sprites);
-			
+            sf::Texture test_texture;
+            test_texture.loadFromFile("../Chrono Split/Assets/enemyBlue3.png");
+            
+            std::string texture_names[1] = {"Body"};
+            sf::Texture *textures[1] = {&test_texture};
+			entity::Entity entity(texture_names, textures, 1);
 
 			// Run the program as long as the window is open
 			while (window.isOpen())
@@ -89,7 +90,7 @@ namespace world
 					// Process any key down events from the keyboard
 					if (event.type == sf::Event::KeyPressed)
 					{
-						cout << Time() << "Keypress: " << event.key.code << endl; //log keys
+						cout << Time() << "Keypress: " << event.key.code << endl; // log keys
 
 						// Game input should not be handled in main
                         //Send the input to the World class later
@@ -144,7 +145,7 @@ namespace world
 				// Clear the screen each frame
 				renderer.clear(window);
 
-				renderer.draw_list(window, entity.parts, 1);
+				renderer.draw_list(window, entity.getSprites(), 1);
 				
 
 				// Draw stuff with the render engine
@@ -158,7 +159,6 @@ namespace world
 				// Actually push all draw calls to the display
 				renderer.display(window);
 			}
-		}
-
+        }
 	};
 }
