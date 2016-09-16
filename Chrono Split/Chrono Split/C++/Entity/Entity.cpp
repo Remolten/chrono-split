@@ -12,7 +12,7 @@ namespace entity
 		sf::Vector2f size;
 		entity::Sprite *parts;
 		sf::Vector2f velocity;
-		float rigidity = 1;
+		double rigidity = 1;
 
         // Constructor
         // Takes an array of arrays of the form [[texture_file_path, texture_name], ...]
@@ -22,7 +22,6 @@ namespace entity
             topLeft = sf::Vector2f(0.f, 0.f);
 			velocity = sf::Vector2f(0.f, 0.f);
             parts = new entity::Sprite[number_of_sprites];// Make the sprite container
-			rigidity = 1;
 
 			// Make the sprite and textures and store in the Entity container
             for (unsigned int i = 0; i < number_of_sprites; i++)
@@ -146,7 +145,7 @@ namespace entity
 		}
 
 		// Sets a oblject's Bouncyness (0-100)
-		void setRigidity(int i)
+		void setRigidity(double i)
 		{
 			rigidity = i/100;
 		}
