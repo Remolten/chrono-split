@@ -12,7 +12,8 @@ namespace entity
 		sf::Vector2f size;
 		entity::Sprite *parts;
 		sf::Vector2f velocity;
-        
+		float rigidity = 1;
+
         // Constructor
         // Takes an array of arrays of the form [[texture_file_path, texture_name], ...]
 		Entity(std::string texture_names[], sf::Texture *textures[], unsigned int number_of_sprites)
@@ -21,7 +22,8 @@ namespace entity
             topLeft = sf::Vector2f(0.f, 0.f);
 			velocity = sf::Vector2f(0.f, 0.f);
             parts = new entity::Sprite[number_of_sprites];// Make the sprite container
-            
+			rigidity = 1;
+
 			// Make the sprite and textures and store in the Entity container
             for (unsigned int i = 0; i < number_of_sprites; i++)
             {
@@ -61,23 +63,23 @@ namespace entity
 			if (topLeft.x > window.getSize().x - size.x)
 			{
 				topLeft.x = window.getSize().x - size.x;
-				velocity.x = -velocity.x;
+				velocity.x = -velocity.x * rigidity;
 			}
 			else if (topLeft.x < 0.f)
 			{
 				topLeft.x = 0.f;
-				velocity.x = -velocity.x;
+				velocity.x = -velocity.x * rigidity;
 			}
 
 			if (topLeft.y > window.getSize().y - size.y)
 			{
 				topLeft.y = window.getSize().y - size.y;
-				velocity.y = -velocity.y;
+				velocity.y = -velocity.y * rigidity;
 			}
 			else if (topLeft.y < 0.f)
 			{
 				topLeft.y = 0.f;
-				velocity.y = -velocity.y;
+				velocity.y = -velocity.y * rigidity;
 			}
 			setPosition(topLeft);
 		}
@@ -141,6 +143,12 @@ namespace entity
 			{
 				parts[i].setOrigin(topLeft);
 			}
+		}
+
+		// Sets a oblject's Bouncyness (0-100)
+		void setRigidity(int i)
+		{
+			rigidity = i/100;
 		}
 
         // Return the entity's array of sprites as a pointer value

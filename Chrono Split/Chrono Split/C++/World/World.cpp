@@ -105,27 +105,30 @@ namespace world
 
 			// Define Inner Part (colored)
 			// sprite1.setColor(sf::Color(000, 255, 000, 255)); // color of part
-			setGravity(1.f, 0.f);
+			setGravity(0.f, 1.f);
 
 			entity::Entity entity0(texture_names, textures, 2);
 			entity0.setColor(sf::Color(250, 250, 255, 255), 0);
 			entity0.setColor(sf::Color(255, 000, 000, 255), 1);
 			entity0.setPosition(sf::Vector2f(001.f, 000.f));
-			entity0.setVelocity(sf::Vector2f(0.f, 1.f));
+			entity0.setVelocity(sf::Vector2f(1.f, 1.f));
+			entity0.setRigidity(75);
 			//entity0.setRotation(180);
 
 			entity::Entity entity1(texture_names, textures, 2);
 			entity1.setColor(sf::Color(250, 250, 255, 255), 0);
 			entity1.setColor(sf::Color(000, 255, 000, 255), 1);
 			entity1.setPosition(sf::Vector2f(001.f, 000.f));
-			entity1.setVelocity(sf::Vector2f(0.f, 2.f));
+			entity1.setVelocity(sf::Vector2f(2.f, 2.f));
+			entity1.setRigidity(50);
 			
 			// attempt to make sprite #3
 			entity::Entity entity2(texture_names, textures, 2);
 			entity2.setColor(sf::Color(250, 250, 255, 255), 0);
 			entity2.setColor(sf::Color(000, 000, 255, 255), 1);
 			entity2.setPosition(sf::Vector2f(001.f, 000.f));
-			entity2.setVelocity(sf::Vector2f(0.f, 3.f));
+			entity2.setVelocity(sf::Vector2f(3.f, 3.f));
+			entity2.setRigidity(25);
 
 			// Run the program as long as the window is open
 			while (window.isOpen())
