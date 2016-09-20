@@ -8,11 +8,11 @@ namespace entity
 	struct Entity
 	{    
         // Variables
-		sf::Vector2f topLeft = sf::Vector2f(0.f, 0.f);
+		sf::Vector2f topLeft;;
 		sf::Vector2f size;
 		entity::Sprite *parts;
 		sf::Vector2f velocity;
-		double rigidity = 1;
+		double rigidity;
 
         // Constructor
         // Takes an array of arrays of the form [[texture_file_path, texture_name], ...]
@@ -21,6 +21,7 @@ namespace entity
             // Variables
             topLeft = sf::Vector2f(0.f, 0.f);
 			velocity = sf::Vector2f(0.f, 0.f);
+            rigidity = 1;
             parts = new entity::Sprite[number_of_sprites];// Make the sprite container
 
 			// Make the sprite and textures and store in the Entity container
@@ -52,8 +53,8 @@ namespace entity
 			parts[sprite].setColor(color);
 		}
 
-		// Move tick for an entity
-		void move(sf::RenderWindow &window, sf::Vector2f gravity) 
+		// Update entity each frame
+		void update(sf::RenderWindow &window, sf::Vector2f gravity) 
 		{
 			velocity.x = velocity.x + gravity.x;
 			velocity.y = velocity.y + gravity.y;
@@ -82,6 +83,18 @@ namespace entity
 			}
 			setPosition(topLeft);
 		}
+        
+        // Shift an entity and all of its parts
+        void move(sf::Vector2f change)
+        {
+            for (int i = 0; i < 2; ++i) //  needs fixed
+            {
+                sf::Vector2f position = parts[i].getPosition();
+                position.x += change.x;
+                position.y += change.y;
+                setPosition(position);
+            }
+        }
 
 		// Sets entity members position from a vector
 		void setPosition(sf::Vector2f position)

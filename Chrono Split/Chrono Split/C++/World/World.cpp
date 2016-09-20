@@ -20,14 +20,21 @@ namespace world
 	struct World
 	{
 		// Variables
-		sf::Vector2f gravity = sf::Vector2f(0.f, 1.f); // Default no gravity
-
-		std::chrono::high_resolution_clock::time_point ProgStartTime = std::chrono::high_resolution_clock::now();
+		std::chrono::high_resolution_clock::time_point ProgStartTime;
+        
+        sf::Vector2f gravity; // Default no gravity
+        
+        // Constructor
+		World()
+		{
+            ProgStartTime = std::chrono::high_resolution_clock::now();
+            gravity = sf::Vector2f(0.f, 1.f);
+        }
 
 		std::string Time()
 		{
 			std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now(); // Records now
-			std::chrono::duration<double> time = std::chrono::duration_cast<std::chrono::duration <double>>(now - ProgStartTime); // Change in time
+			std::chrono::duration<double> time = std::chrono::duration_cast<std::chrono::duration <double> >(now - ProgStartTime); // Change in time
 			double times = time.count();
 
 			// Parse into string
@@ -49,11 +56,6 @@ namespace world
 		{
 			gravity = sf::Vector2f(x, y);
 		}
-
-		// Constructor
-		World()
-		{
-        }
         
         void run()
         {
@@ -129,6 +131,9 @@ namespace world
 			entity2.setPosition(sf::Vector2f(001.f, 000.f));
 			entity2.setVelocity(sf::Vector2f(3.f, 3.f));
 			entity2.setRigidity(97);
+            
+            // Set a move speed for testing
+            float speed = 6;
 
 			// Run the program as long as the window is open
 			while (window.isOpen())
@@ -153,63 +158,59 @@ namespace world
 					{
 						cout << Time() << "Keypress: " << event.key.code << endl; // log keys
 
-						// Game input should not be handled in main
-                        // Send the input to the World class later
-                        /*
                         if (event.key.code == sf::Keyboard::W)
                         {
-                        // Set the move up flag
+                            entity0.move(sf::Vector2f(0.f, -speed));
                         }
 
                         if (event.key.code == sf::Keyboard::S)
                         {
-                        // Set the move down flag
+                            entity0.move(sf::Vector2f(0.f, speed));
                         }
 
                         if (event.key.code == sf::Keyboard::A)
                         {
-                        // Set the move left flag
+                            entity0.move(sf::Vector2f(-speed, 0.f));
                         }
 
                         if (event.key.code == sf::Keyboard::D)
                         {
-                        // Set the move right flag
-                        */
+                            entity0.move(sf::Vector2f(speed, 0.f));
+                        }
 					}
-					/*
+                    
 					// Process any key up events from the keyboard
 					if (event.type == sf::Event::KeyReleased)
 					{
-					if (event.key.code == sf::Keyboard::W)
-					{
-					// Unset the move up flag
-					}
+                        if (event.key.code == sf::Keyboard::W)
+                        {
+                            // Unset the move up flag
+                        }
 
-					if (event.key.code == sf::Keyboard::S)
-					{
-					// Unset the move down flag
-					}
+                        if (event.key.code == sf::Keyboard::S)
+                        {
+                            // Unset the move down flag
+                        }
 
-					if (event.key.code == sf::Keyboard::A)
-					{
-					// Unset the move left flag
-					}
+                        if (event.key.code == sf::Keyboard::A)
+                        {
+                            // Unset the move left flag
+                        }
 
-					if (event.key.code == sf::Keyboard::D)
-					{
-					// Unset the move right flag
+                        if (event.key.code == sf::Keyboard::D)
+                        {
+                            // Unset the move right flag
+                        }
 					}
-					}
-					*/
 				}
 
 				// Clear the screen each frame
 				renderer.clear(window);
 				
 				// Move tic
-				entity0.move(window, gravity);
-				entity1.move(window, gravity);
-				entity2.move(window, gravity);
+				entity0.update(window, gravity);
+				entity1.update(window, gravity);
+				entity2.update(window, gravity);
 
 				renderer.draw_list(window, entity0.getSprites(), 2);
 				renderer.draw_list(window, entity1.getSprites(), 2);
