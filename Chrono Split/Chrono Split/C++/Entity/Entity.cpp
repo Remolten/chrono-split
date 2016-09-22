@@ -87,13 +87,8 @@ namespace entity
         // Shift an entity and all of its parts
         void move(sf::Vector2f change)
         {
-            for (int i = 0; i < 2; ++i) //  needs fixed
-            {
-                sf::Vector2f position = parts[i].getPosition();
-                position.x += change.x;
-                position.y += change.y;
-                setPosition(position);
-            }
+			
+            setVelocity(velocity + change);
         }
 
 		// Sets entity members position from a vector
