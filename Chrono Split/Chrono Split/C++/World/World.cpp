@@ -114,7 +114,7 @@ namespace world
 			entity0.setColor(sf::Color(255, 000, 000, 255), 1);
 			entity0.setPosition(sf::Vector2f(001.f, 000.f));
 			entity0.setVelocity(sf::Vector2f(1.f, 1.f));
-			entity0.setRigidity(150);
+			entity0.setRigidity(99);
 			//entity0.setRotation(180);
 
 			entity::Entity entity1(texture_names, textures, 2);
@@ -132,8 +132,30 @@ namespace world
 			entity2.setVelocity(sf::Vector2f(3.f, 3.f));
 			entity2.setRigidity(100);
             
+			// block 1
+			sf::Texture box1;
+			box1.loadFromFile("../Chrono Split/Assets/beamGrey.png");
+
+			//sf::Texture box2;
+			//box2.loadFromFile("../Chrono Split/Assets/beamGrey.png");
+
+			std::string str[2] = { "box" , "null"};
+			sf::Texture *tex[2] = { &box1 , &box1};
+			entity::Entity block1(str, tex, 2);
+
+			// box collisions
+			block1.setColor(sf::Color(255, 000, 000, 255), 0);
+			block1.setPosition(400, 400);
+			block1.setStatic(true);
+			entity::Entity *collisions = new entity::Entity[256];
+			collisions[0] = block1;
+
+
+
+
+
             // Set a move speed for testing
-            float speed = 6;
+            float speed = 2;
 
 			// Run the program as long as the window is open
 			while (window.isOpen())
@@ -154,28 +176,28 @@ namespace world
 						window.setSize(window.getSize());
 
 					// Process any key down events from the keyboard
-					if (event.type == sf::Event::KeyPressed)
+					if (event.type == sf::Event::KeyPressed) //no multi input compatability aka 2 keys at once
 					{
 						cout << Time() << "Keypress: " << event.key.code << endl; // log keys
 
                         if (event.key.code == sf::Keyboard::W)
                         {
-                            entity0.move(sf::Vector2f(0.f, -speed));
+                            entity0.changeVelocity(sf::Vector2f(0.f, -speed));
                         }
 
                         if (event.key.code == sf::Keyboard::S)
                         {
-                            entity0.move(sf::Vector2f(0.f, speed));
+                            entity0.changeVelocity(sf::Vector2f(0.f, speed));
                         }
 
                         if (event.key.code == sf::Keyboard::A)
                         {
-                            entity0.move(sf::Vector2f(-speed, 0.f));
+                            entity0.changeVelocity(sf::Vector2f(-speed, 0.f));
                         }
 
                         if (event.key.code == sf::Keyboard::D)
                         {
-                            entity0.move(sf::Vector2f(speed, 0.f));
+                            entity0.changeVelocity(sf::Vector2f(speed, 0.f));
                         }
 					}
                     
@@ -212,9 +234,13 @@ namespace world
 				entity1.update(window, gravity);
 				entity2.update(window, gravity);
 
+				block1.update(window, gravity);
+
 				renderer.draw_list(window, entity0.getSprites(), 2);
 				renderer.draw_list(window, entity1.getSprites(), 2);
 				renderer.draw_list(window, entity2.getSprites(), 2);
+
+				renderer.draw_list(window, block1.getSprites(), 1);
 
 				// Actually push all draw calls to the display
 				renderer.display(window);

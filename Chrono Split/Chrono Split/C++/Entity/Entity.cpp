@@ -13,8 +13,13 @@ namespace entity
 		entity::Sprite *parts;
 		sf::Vector2f velocity;
 		double rigidity;
+		bool Static;
 
-        // Constructor
+        // Default Constructor
+		Entity()
+		{
+
+		}
         // Takes an array of arrays of the form [[texture_file_path, texture_name], ...]
 		Entity(std::string texture_names[], sf::Texture *textures[], unsigned int number_of_sprites)
 		{
@@ -23,6 +28,7 @@ namespace entity
 			velocity = sf::Vector2f(0.f, 0.f);
             rigidity = 1;
             parts = new entity::Sprite[number_of_sprites];// Make the sprite container
+			Static = false;
 
 			// Make the sprite and textures and store in the Entity container
             for (unsigned int i = 0; i < number_of_sprites; i++)
@@ -47,6 +53,12 @@ namespace entity
             }
         }
 
+		// Set Static to var
+		void setStatic(bool var)
+		{
+			Static = var;
+		}
+
 		// Sets sprite color
 		void setColor(sf::Color color, int sprite)
 		{
@@ -56,6 +68,10 @@ namespace entity
 		// Update entity each frame
 		void update(sf::RenderWindow &window, sf::Vector2f gravity) 
 		{
+			if (Static)
+			{
+				return;
+			}
 			velocity.x = velocity.x + gravity.x;
 			velocity.y = velocity.y + gravity.y;
 			topLeft = topLeft + velocity;
@@ -85,9 +101,8 @@ namespace entity
 		}
         
         // Shift an entity and all of its parts
-        void move(sf::Vector2f change)
+        void changeVelocity(sf::Vector2f change)
         {
-			
             setVelocity(velocity + change);
         }
 
