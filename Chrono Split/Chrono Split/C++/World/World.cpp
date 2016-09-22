@@ -173,7 +173,7 @@ namespace world
 
 					// To do Set aspect ratio bassed off of window size
 					if (event.type == sf::Event::Resized)
-						window.setSize(window.getSize());
+						window.setView(sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height)));
 
 					// Process any key down events from the keyboard
 					if (event.type == sf::Event::KeyPressed) //no multi input compatability aka 2 keys at once
