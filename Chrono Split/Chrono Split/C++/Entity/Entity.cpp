@@ -8,7 +8,7 @@ namespace entity
 	struct Entity
 	{    
         // Variables
-		sf::Vector2f topLeft;;
+		sf::Vector2f topLeft;
 		sf::Vector2f size;
 		entity::Sprite *parts;
 		sf::Vector2f velocity;

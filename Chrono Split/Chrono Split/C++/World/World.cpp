@@ -69,29 +69,18 @@ namespace world
 			// Create an instance of the render engine
 			render::render_engine renderer;
 			cout << Time() << "Render initilized" << endl;
+            
+            // Create an instance of the physics engine
+            physics::Physics physicsEngine;
+            cout << Time() << "Physics initilized" << endl;
 
 			// Create a clock which gives the delta time of each frame
 			sf::Clock clock;
-			cout << Time() << "Timer  initilized" << endl;
+			cout << Time() << "Timer initilized" << endl;
 
 			// Store the delta time
 			// Pass this to any function handling movement/time
 			sf::Time delta_time;
-			
-            /*
-            // Below is the process of properly creating an entity
-			// Create textures we need
-            sf::Texture test_texture;
-            test_texture.loadFromFile("../Chrono Split/Assets/enemyBlue3.png");
-            // Make 2 arrays
-            // 1 with the names of the parts
-            std::string texture_names[1] = {"Body"};
-            // The other with pointers to the textures
-            sf::Texture *textures[1] = {&test_texture};
-            // Then create our actual entity object
-            // Note: last argument is the size of the 2 arrays (they must be same size obviously)
-			entity::Entity entity(texture_names, textures, 1);
-            */
 			
 			// Define Outer Part (Un colored)
 			sf::Texture enemyLightTexture;
@@ -150,10 +139,6 @@ namespace world
 			entity::Entity *collisions = new entity::Entity[256];
 			collisions[0] = block1;
 
-
-
-
-
             // Set a move speed for testing
             float speed = 2;
 
@@ -173,6 +158,7 @@ namespace world
 
 					// To do Set aspect ratio bassed off of window size
 					if (event.type == sf::Event::Resized)
+                        // Changes the size of the viewport, but not the resolution
 						window.setView(sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height)));
 
 					// Process any key down events from the keyboard
@@ -229,7 +215,13 @@ namespace world
 				// Clear the screen each frame
 				renderer.clear(window);
 				
-				// Move tic
+                // Check collision between entities and block1
+                // Note: Function only changes stuff in entity 1 right now
+                physicsEngine.collision(entity0, block1);
+                physicsEngine.collision(entity1, block1);
+                physicsEngine.collision(entity2, block1);
+                
+				// Move tick
 				entity0.update(window, gravity);
 				entity1.update(window, gravity);
 				entity2.update(window, gravity);
