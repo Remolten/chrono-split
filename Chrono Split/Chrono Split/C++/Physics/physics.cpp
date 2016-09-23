@@ -10,7 +10,7 @@ namespace physics
             if (entity1.topLeft.x <= entity2.topLeft.x + entity2.size.x &&
                 entity2.topLeft.x <= entity1.topLeft.x + entity1.size.x &&
                 entity1.topLeft.y <= entity2.topLeft.y + entity2.size.y &&
-                entity2.topLeft.y <= entity1.topLeft.y + entity2.size.y)
+                entity2.topLeft.y <= entity1.topLeft.y + entity1.size.y)
             {
                 // Reverse the objects velocity if it is moving at all
                 entity1.velocity.x *= -1;
