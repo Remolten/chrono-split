@@ -136,8 +136,6 @@ namespace world
 			block1.setColor(sf::Color(255, 000, 000, 255), 0);
 			block1.setPosition(400, 400);
 			block1.setStatic(true);
-			entity::Entity *collisions = new entity::Entity[256];
-			collisions[0] = block1;
 
             // Set a move speed for testing
             float speed = 2;
@@ -162,7 +160,8 @@ namespace world
 						window.setView(sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height)));
 
 					// Process any key down events from the keyboard
-					if (event.type == sf::Event::KeyPressed) //no multi input compatability aka 2 keys at once
+                    // Will accept multi-key input
+					if (event.type == sf::Event::KeyPressed)
 					{
 						cout << Time() << "Keypress: " << event.key.code << endl; // log keys
 
@@ -228,6 +227,7 @@ namespace world
 
 				block1.update(window, gravity);
 
+                // Draw sprites to the screen
 				renderer.draw_list(window, entity0.getSprites(), 2);
 				renderer.draw_list(window, entity1.getSprites(), 2);
 				renderer.draw_list(window, entity2.getSprites(), 2);
