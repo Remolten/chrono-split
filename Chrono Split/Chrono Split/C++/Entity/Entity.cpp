@@ -42,13 +42,13 @@ namespace entity
                 //  Set the size
                 sf::Vector2u localSize = textures[i]->getSize();
                 
-                if (size.x <= localSize.x)
+                if (size.x <= (float)localSize.x)
                 {
-                    size.x = localSize.x;
+                    size.x = (float)localSize.x;
                 }
-                if (size.y <= localSize.y)
+                if (size.y <= (float)localSize.y)
                 {
-                    size.y = localSize.y;
+                    size.y = (float)localSize.y;
                 }
             }
         }
@@ -79,23 +79,23 @@ namespace entity
 			if (topLeft.x > window.getSize().x - size.x)
 			{
 				topLeft.x = window.getSize().x - size.x;
-				velocity.x = -velocity.x * rigidity;
+				velocity.x = float(-velocity.x * rigidity);
 			}
 			else if (topLeft.x < 0.f)
 			{
 				topLeft.x = 0.f;
-				velocity.x = -velocity.x * rigidity;
+				velocity.x = float(-velocity.x * rigidity);
 			}
 
 			if (topLeft.y > window.getSize().y - size.y)
 			{
 				topLeft.y = window.getSize().y - size.y;
-				velocity.y = -velocity.y * rigidity;
+				velocity.y = float(-velocity.y * rigidity);
 			}
 			else if (topLeft.y < 0.f)
 			{
 				topLeft.y = 0.f;
-				velocity.y = -velocity.y * rigidity;
+				velocity.y = float(-velocity.y * rigidity);
 			}
 			setPosition(topLeft);
 		}
@@ -152,7 +152,7 @@ namespace entity
 			sf::Vector2f temp = topLeft; //create a temp var
 
 			//resolve points into a vector and then resolves at a degree mesure
-			float vector = sqrt((int64_t(size.x - topLeft.x) ^ 2) + (int64_t(size.y - topLeft.y) ^ 2));
+			float vector = (float) sqrt((int64_t(size.x - topLeft.x) ^ 2) + (int64_t(size.y - topLeft.y) ^ 2));
 			topLeft.x = (vector * cos(degrees)) + topLeft.x;
 			topLeft.y = (vector * sin(degrees)) + topLeft.y;
 			
