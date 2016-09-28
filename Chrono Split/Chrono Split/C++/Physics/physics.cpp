@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-
+#include "../Entity/Entity.cpp"
 namespace physics
 {
     struct Physics

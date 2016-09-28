@@ -1,0 +1,16 @@
+﻿  World.cpp
+c:\users\7389030\source\repos\chrono-split\chrono split\chrono split\c++\entity\sprite.cpp(1): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Map.cpp
+  sprite.cpp
+c:\users\7389030\source\repos\chrono-split\chrono split\chrono split\c++\entity\sprite.cpp(1): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Entity.cpp
+c:\users\7389030\source\repos\chrono-split\chrono split\chrono split\c++\entity\sprite.cpp(1): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  render.cpp
+c:\users\7389030\source\repos\chrono-split\chrono split\chrono split\c++\render\render.cpp(1): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  physics.cpp
+c:\users\7389030\source\repos\chrono-split\chrono split\chrono split\c++\physics\physics.cpp(1): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Main.cpp
+c:\users\7389030\source\repos\chrono-split\chrono split\chrono split\c++\entity\sprite.cpp(1): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Player.cpp
+c:\users\7389030\source\repos\chrono-split\chrono split\chrono split\c++\entity\sprite.cpp(1): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Generating Code...
