@@ -125,16 +125,13 @@ namespace world
 			sf::Texture box1;
 			box1.loadFromFile("../Chrono Split/Assets/beamGrey.png");
 
-			//sf::Texture box2;
-			//box2.loadFromFile("../Chrono Split/Assets/beamGrey.png");
-
 			std::string str[2] = { "box" , "null"};
 			sf::Texture *tex[2] = { &box1 , &box1};
 			entity::Entity block1(str, tex, 2);
 
 			// box collisions
 			block1.setColor(sf::Color(255, 000, 000, 255), 0);
-			block1.setPosition(400, 400);
+			block1.setPosition(400, 300);
 			block1.setStatic(true);
 
             // Set a move speed for testing

@@ -133,7 +133,7 @@ namespace entity
 			velocity = Velocity;
 		}
 
-		//Overload
+		// Overload
 		// Sets velocity to a pair of floats (x,y)
 		void setVelocity(float x, float y)
 		{

@@ -17,9 +17,17 @@ namespace physics
                 // Below 2 if statements could be made into functions
                 if (!entity1.Static)
                 {
-                    // Reverse the objects velocity if it is moving at all
-                    entity1.velocity.x *= -1;
-                    entity1.velocity.y *= -1;
+                    // Reverse the entity's y velocity if it primarily hits the top or bottom of something
+                    if (entity1.topLeft.y + entity1.size.y <= entity2.topLeft.y + entity1.velocity.y ||
+                        entity1.topLeft.y >= entity2.topLeft.y + entity2.size.y - entity1.velocity.y)
+                    {
+                        entity1.velocity.y *= -1;
+                    }
+                    // Otherwise, reverse its x velocity only
+                    else
+                    {
+                        entity1.velocity.x *= -1;
+                    }
 
                     // Just move the entity so it doesn't get stuck
                     // Change the position so the object is not colliding with whatever anymore
