@@ -18,8 +18,12 @@ namespace entity
         // Default Constructor
 		Entity()
 		{
-
+			topLeft = sf::Vector2f(0.f, 0.f);
+			velocity = sf::Vector2f(0.f, 0.f);
+			rigidity = 1;
+			Static = false;
 		}
+
         // Takes an array of arrays of the form [[texture_file_path, texture_name], ...]
 		Entity(std::string texture_names[], sf::Texture *textures[], unsigned int number_of_sprites)
 		{
@@ -43,13 +47,9 @@ namespace entity
                 sf::Vector2u localSize = textures[i]->getSize();
                 
                 if (size.x <= (float)localSize.x)
-                {
                     size.x = (float)localSize.x;
-                }
                 if (size.y <= (float)localSize.y)
-                {
                     size.y = (float)localSize.y;
-                }
             }
         }
 
@@ -72,6 +72,7 @@ namespace entity
 			{
 				return;
 			}
+
 			velocity.x = velocity.x + gravity.x;
 			velocity.y = velocity.y + gravity.y;
 			topLeft = topLeft + velocity;
@@ -97,6 +98,7 @@ namespace entity
 				topLeft.y = 0.f;
 				velocity.y = float(-velocity.y * rigidity);
 			}
+
 			setPosition(topLeft);
 		}
         
@@ -152,7 +154,7 @@ namespace entity
 			sf::Vector2f temp = topLeft; //create a temp var
 
 			//resolve points into a vector and then resolves at a degree mesure
-			float vector = (float) sqrt((int64_t(size.x - topLeft.x) ^ 2) + (int64_t(size.y - topLeft.y) ^ 2));
+			float vector = (float)sqrt((int64_t(size.x - topLeft.x) ^ 2) + (int64_t(size.y - topLeft.y) ^ 2));
 			topLeft.x = (vector * cos(degrees)) + topLeft.x;
 			topLeft.y = (vector * sin(degrees)) + topLeft.y;
 			
@@ -170,7 +172,7 @@ namespace entity
 		// Sets a oblject's Bouncyness (0-100)
 		void setRigidity(double i)
 		{
-			rigidity = i/100;
+			rigidity = i / 100;
 		}
 
         // Return the entity's array of sprites as a pointer value

@@ -37,9 +37,17 @@ namespace physics
 
                 if (!entity2.Static)
                 {
-                    // Reverse the objects velocity if it is moving at all
-                    entity2.velocity.x *= -1;
-                    entity2.velocity.y *= -1;
+					// Reverse the entity's y velocity if it primarily hits the top or bottom of something
+					if (entity2.topLeft.y + entity2.size.y <= entity1.topLeft.y + entity2.velocity.y ||
+						entity2.topLeft.y >= entity1.topLeft.y + entity1.size.y - entity2.velocity.y)
+					{
+						entity2.velocity.y *= -1;
+					}
+					// Otherwise, reverse its x velocity only
+					else
+					{
+						entity2.velocity.x *= -1;
+					}
 
                     // Just move the entity so it doesn't get stuck
                     // Change the position so the object is not colliding with whatever anymore
